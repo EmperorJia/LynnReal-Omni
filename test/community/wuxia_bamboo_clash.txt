@@ -1,5 +1,0 @@
-integrated_multimodal_description: [Shot 1] Live-action cinematic wuxia, a low-angle tracking shot in a rain-dark bamboo grove follows two adult sword fighters in contrasting black and white robes as they dash toward each other, pivot, and strike polished blades together at chest height; the impact throws a tight fan of sparks and rain droplets while faces, hands, sleeves, swords, and bamboo remain coherent in one continuous shot.
-
-overall_soundscape: Rain rattles through bamboo leaves, wet footfalls slap mud, robes snap in the air, and one sharp synchronized steel impact rings through the grove.
-
-non_diegetic_music: Rapid low string ostinatos with one deep taiko strike exactly at the blade collision.
