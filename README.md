@@ -13,11 +13,17 @@
   <a href="#tasks">Tasks</a> &nbsp;·&nbsp;
   <a href="#usage-guides">Usage guides</a> &nbsp;·&nbsp;
   <a href="#roadmap">Roadmap</a> &nbsp;·&nbsp;
-  <a href="#acknowledgments">Acknowledgments</a>
+  <a href="#acknowledgments">Acknowledgments</a> &nbsp;·&nbsp;
+  <a href="docs/LynnReal-Omni-Paper.pdf">Paper</a> <sup><strong>HOT</strong></sup>
 </p>
 
 > [!IMPORTANT]
 > **This repository is an early beta and still has known limitations and unfinished features. Bugs, compatibility issues and inconsistent generation quality may remain. Thank you for your patience and understanding as we continue improving it. We plan to release the training code, part of the training data, and a more efficient dit in the future.**
+
+## Paper
+
+> **HOT**: [LynnReal-Omni: Native Multimodal Video Generation for Agent-Controlled Visual Worlds](docs/LynnReal-Omni-Paper.pdf)  
+> Technical report, September 2026.
 
 ## Overview
 
