@@ -27,9 +27,10 @@
 
 ## Demo
 
-[![Watch the LynnReal-Omni demo on YouTube](docs/demo-cover.jpg)](https://www.youtube.com/watch?v=P5Bl2mriEmk)
-
-Watch the demo on [YouTube](https://www.youtube.com/watch?v=P5Bl2mriEmk) or [Bilibili](https://www.bilibili.com/video/BV12vYB6BEjc/).
+| YouTube | Bilibili |
+| :---: | :---: |
+| [![Watch the LynnReal-Omni demo on YouTube](docs/demo-cover.jpg)](https://www.youtube.com/watch?v=P5Bl2mriEmk) | [![Watch the LynnReal-Omni demo on Bilibili](docs/demo-cover.jpg)](https://www.bilibili.com/video/BV12vYB6BEjc/) |
+| [Watch on YouTube ↗](https://www.youtube.com/watch?v=P5Bl2mriEmk) | [Watch on Bilibili ↗](https://www.bilibili.com/video/BV12vYB6BEjc/) |
 
 ## Overview
 
