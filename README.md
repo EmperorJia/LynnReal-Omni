@@ -22,7 +22,7 @@
 
 ## Paper
 
-> 🔥 **HOT**: [LynnReal-Omni: Native Multimodal Video Generation for Agent-Controlled Visual Worlds](docs/LynnReal-Omni-Paper.pdf)  
+> 🔥 **HOT**: [LynnReal-Omni: Native multi-modal Video Generation for Agentic Visual Workflows](docs/LynnReal-Omni-Paper.pdf)  
 > Technical report, September 2026.
 
 ## Demo
