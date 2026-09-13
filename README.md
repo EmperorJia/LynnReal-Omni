@@ -61,9 +61,9 @@ export HF_XET_HIGH_PERFORMANCE=1
 
 | Model | Sampling | Weights | Status |
 | :--- | :--- | :--- | :--- |
-| **Standard** · BF16 DiT | 4 steps | [Hugging Face ↗](https://huggingface.co/stdstu123/LynnReal-Onmi-beta-0.1) | Upload planned |
-| **Flash** · W8A8 DiT | 3 steps | [Hugging Face ↗](https://huggingface.co/stdstu123/LynnReal-Onmi-flash-beta-0.1) | Upload planned |
-| **Lightweight VAE** | Optional codec | [Hugging Face ↗](https://huggingface.co/stdstu123/LynnReal-Onmi-light-vae) | Upload planned |
+| **Standard** · BF16 DiT | 4 steps | [Hugging Face ↗](https://huggingface.co/stdstu123/LynnReal-Onmi-beta-0.1) | Uploading · private |
+| **Flash** · W8A8 DiT | 3 steps | [Hugging Face ↗](https://huggingface.co/stdstu123/LynnReal-Onmi-flash-beta-0.1) | Uploading · private |
+| **Lightweight VAE** | Optional codec | [Hugging Face ↗](https://huggingface.co/stdstu123/LynnReal-Onmi-light-vae) | Uploaded · private |
 | **Standard DiT INT8** | 4 steps | To be announced | **Coming soon** |
 
 Place each downloaded bundle under `weight/`, preserving its configurations and
