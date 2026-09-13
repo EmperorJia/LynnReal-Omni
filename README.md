@@ -25,6 +25,12 @@
 > **HOT**: [LynnReal-Omni: Native Multimodal Video Generation for Agent-Controlled Visual Worlds](docs/LynnReal-Omni-Paper.pdf)  
 > Technical report, September 2026.
 
+## Demo
+
+[![Watch the LynnReal-Omni demo on YouTube](docs/demo-cover.jpg)](https://www.youtube.com/watch?v=P5Bl2mriEmk)
+
+Click the image above to watch the demo on [YouTube](https://www.youtube.com/watch?v=P5Bl2mriEmk).
+
 ## Overview
 
 | Generate | Control | Edit & repair |
