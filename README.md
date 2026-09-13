@@ -7,14 +7,14 @@
 </p>
 
 <p align="center">
-  <a href="docs/LynnReal-Omni-Paper.pdf">Paper</a> 
+  <a href="docs/LynnReal-Omni-Paper.pdf">Paper</a>  &nbsp;·&nbsp;
   <a href="#overview">Overview</a> &nbsp;·&nbsp;
   <a href="#models">Models</a> &nbsp;·&nbsp;
   <a href="#quick-start">Quick start</a> &nbsp;·&nbsp;
   <a href="#tasks">Tasks</a> &nbsp;·&nbsp;
   <a href="#usage-guides">Usage guides</a> &nbsp;·&nbsp;
   <a href="#roadmap">Roadmap</a> &nbsp;·&nbsp;
-  <a href="#acknowledgments">Acknowledgments</a> &nbsp;·&nbsp;
+  <a href="#acknowledgments">Acknowledgments</a>
 </p>
 
 > [!IMPORTANT]
