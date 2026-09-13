@@ -1,5 +1,0 @@
-integrated_multimodal_description: [Shot 1] Continue the wildlife tracking shot for the next five seconds. Picture 1 is the current final frame; Picture 2 is the original first frame and supplies the same cheetah appearance, fine spotted coat, acacia grassland and warm natural daylight. The cheetah keeps running steadily from left to right over the savanna, with a continuous repeating four-legged gallop and its long tail balancing each stride. Keep the same animal size and natural coat pattern. The camera tracks alongside at the animal pace, keeping its complete body and paws in a wide side view as grasses and acacia trees pass smoothly behind. Resume directly from the current leg positions and camera position. Stable soft afternoon exposure, fine dry grass texture, a natural pale sky, no shot transition. The original image is a past appearance reference, not a destination or final frame.
-
-overall_soundscape: N/A
-
-non_diegetic_music: N/A

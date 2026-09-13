@@ -1,5 +1,0 @@
-integrated_multimodal_description: [Shot 1] Continue this rainy city intersection at night in one fixed-camera shot. Picture 1 defines the buildings, sign colors, wet-road texture and night exposure. Continue the cars and umbrella-carrying pedestrians from their current positions in Picture 2, walking and driving naturally through the established lanes. Keep the buildings stationary, preserve fine reflections and steady rain, and let people and cars leave the frame normally.
-
-overall_soundscape: N/A
-
-non_diegetic_music: N/A

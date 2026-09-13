@@ -1,7 +1,0 @@
-For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
-
-integrated_multimodal_description: [Shot 1] Photographic live-action footage of the rainy night intersection in <Picture 1>. During this opening 0.917 seconds, the camera is already gliding gently to the right along the pavement at a steady walking pace, keeping its eye-level height and level horizon. A modest compensating pan keeps the crossing in view while nearby umbrellas shift against the more distant illuminated facades, revealing natural parallax. This camera move continues beyond the segment. The pedestrians already crossing continue their current ordinary walking gait, completing one step and beginning the next during this short interval; their umbrellas travel with them. Moving cars continue down their lanes by about one third of their body length. Wet fabric has soft folds, faces and hands have natural contours, and sign lettering stays visible within the illuminated panels. As the viewpoint changes, reflections move across puddles and partially occluded objects are progressively revealed. This is one ongoing camera move and one ongoing street action, without a cut or an arrival pose.
-
-overall_soundscape: N/A
-
-non_diegetic_music: N/A

@@ -1,5 +1,0 @@
-integrated_multimodal_description: Continue the red race car's motion from its current position and rear view in <Picture 2>. Its four wheels remain attached to the chassis and in contact with the wet racing line as the camera follows smoothly behind. Use <Picture 1> to retain the original red body panels, white sponsor patches, black tires and soft overcast daylight. Restore those material colors where the current image has washed-out highlights; preserve its current vehicle pose, road layout and camera direction. Keep realistic water spray and tire tread while rendering the road and barriers with natural photographic texture, removing repeated grid marks or isolated bright speckles that are absent from <Picture 1>. Advance the car continuously through the same broad bend in one uninterrupted shot.
-
-overall_soundscape: N/A
-
-non_diegetic_music: N/A

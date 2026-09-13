@@ -1,5 +1,0 @@
-integrated_multimodal_description: [Shot 1] Continue the watercolor animation from the exact current pose and composition in Picture 1. Picture 2 is the original first frame: use it only to preserve the crane's red crown, black-and-white plumage, translucent watercolor pigments, paper grain and the wetland setting. The crane continues its present movement naturally, then flies steadily over the pond with broad slow wingbeats, passing reeds and lotus leaves as their reflections ripple below. Keep the same ink outlines and gentle pigment washes, the same morning light and a continuous smooth following camera. Depict connected wing joints and consistent body proportions throughout; this is one uninterrupted continuation, with the original frame supplying appearance rather than a pose to return to.
-
-overall_soundscape: N/A
-
-non_diegetic_music: N/A
