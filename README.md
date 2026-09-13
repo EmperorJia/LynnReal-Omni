@@ -53,13 +53,6 @@ independent frame repair uses **4 steps per source frame**. Long streaming can a
 The repositories below are the planned Hugging Face upload locations. Weights
 will become downloadable as their uploads are completed.
 
-For faster Hugging Face transfers on the remote server, enable Xet's
-high-performance mode:
-
-```bash
-export HF_XET_HIGH_PERFORMANCE=1
-```
-
 | Model | Sampling | Weights | Status |
 | :--- | :--- | :--- | :--- |
 | **Standard** · BF16 DiT | 4 steps | [Hugging Face ↗](https://huggingface.co/stdstu123/LynnReal-Onmi-beta-0.1) | Upload planned |
