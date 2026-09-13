@@ -14,7 +14,7 @@
   <a href="#usage-guides">Usage guides</a> &nbsp;·&nbsp;
   <a href="#roadmap">Roadmap</a> &nbsp;·&nbsp;
   <a href="#acknowledgments">Acknowledgments</a> &nbsp;·&nbsp;
-  <a href="docs/LynnReal-Omni-Paper.pdf">Paper</a> <sup><strong><font color="red">HOT</font></strong></sup>
+  <a href="docs/LynnReal-Omni-Paper.pdf">Paper</a> <sup><img src="https://img.shields.io/badge/HOT-red?style=flat-square" alt="HOT"></sup>
 </p>
 
 > [!IMPORTANT]
@@ -22,7 +22,7 @@
 
 ## Paper
 
-> <strong><font color="red">HOT</font></strong>: [LynnReal-Omni: Native Multimodal Video Generation for Agent-Controlled Visual Worlds](docs/LynnReal-Omni-Paper.pdf)  
+> [![HOT](https://img.shields.io/badge/HOT-red?style=flat-square)](docs/LynnReal-Omni-Paper.pdf): [LynnReal-Omni: Native Multimodal Video Generation for Agent-Controlled Visual Worlds](docs/LynnReal-Omni-Paper.pdf)  
 > Technical report, September 2026.
 
 ## Demo
