@@ -1,0 +1,7 @@
+For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
+
+integrated_multimodal_description: [Shot 1] Photographic live-action night footage begins at the rainy city intersection shown in <Picture 1>. The camera remains fixed at the same street-level viewpoint, focal length and framing throughout this 22-frame, 0.917-second segment at 24 fps. The visible people, umbrellas, vehicles, crossing markings, buildings and signs begin at their positions in the first frame. The already walking pedestrians continue their current gait at a steady ordinary cadence: over this short interval each completes one walking step and begins the next. Their umbrellas follow their carriers. The cars already moving continue steadily along their current lanes, advancing about one third of their own body length over the entire interval. Movement is ongoing at the beginning and remains ongoing at the end, without accelerating to complete a crossing or slowing to finish the shot. Objects enter only through a frame boundary or emerge from an existing occlusion. Fine rain and small puddle ripples continue. Preserve the first frame's photographic material detail, colors and exposure: illuminated signs retain internal detail, dark facades retain subtle window structure, clothing has natural soft folds, and wet pavement carries localized colored reflections. Geometry and lighting remain stable while people and vehicles move forward.
+
+overall_soundscape: N/A
+
+non_diegetic_music: N/A

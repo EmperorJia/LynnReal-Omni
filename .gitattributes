@@ -1,0 +1,42 @@
+# Keep local artifacts out of git archive exports as well as Git uploads.
+/weight export-ignore
+/output export-ignore
+/sample export-ignore
+/build export-ignore
+/dist export-ignore
+/.sii export-ignore
+**/__pycache__ export-ignore
+*.pyc export-ignore
+*.egg-info export-ignore
+*.dist-info export-ignore
+*.so export-ignore
+*.dylib export-ignore
+*.dll export-ignore
+*.o export-ignore
+*.a export-ignore
+*.whl export-ignore
+/model/kernels export-ignore
+.env export-ignore
+.env.* export-ignore
+*.pem export-ignore
+*.key export-ignore
+credentials.json export-ignore
+
+/tool/** export-ignore
+/tool/sample_native_overlap.py -export-ignore
+/tool/audit_structure_video_edit.py -export-ignore
+/tool/audit_matched_edit_noise.py -export-ignore
+/tool/audit_native_video_edit.py -export-ignore
+
+/requirements-demo.txt export-ignore
+/test/**/*.py export-ignore
+/test/**/*.sh export-ignore
+/test/**/*.ipynb export-ignore
+/test/demo export-ignore
+/test/diagnostics export-ignore
+/test/regression export-ignore
+/test/stream/repair export-ignore
+/test/color_audit.md export-ignore
+/test/color_encoding.json export-ignore
+/test/stream/step400_validation_context.pt export-ignore
+/skill/lynnreal-prompt/references/evaluation.md export-ignore

@@ -1,0 +1,19 @@
+subject_definitions:
+<Video 1> is the short rainy nighttime street clip to edit.
+<Subject 1> is its existing scene: pedestrians carrying umbrellas, passing cars, wet pavement, shop signs and building facades.
+
+summary:
+[video editing] The target video is an edited version of <Video 1>. Repair its exposure and surface rendering to look like natural live-action street footage, preserving the source action frame by frame.
+
+retention_analysis:
+<Video 1> (entire shot): partially_preserved - preserve the camera viewpoint, composition, duration and exact movement timing; correct the harsh exposure and broken texture.
+<Subject 1> (appears in [Shot 1]): partially_preserved - retain every person's current position, pose and clothing, umbrella placement, vehicle path and architectural geometry; restore smoothly shaded surfaces and natural material detail.
+
+detailed_description:
+[Shot 1] Edit the supplied 22-frame clip at 24 fps. During 00:00.000-00:00.708, pedestrians and cars follow the existing short source trajectories with the same displacement and speed. Keep the camera on its existing path and retain the same framing. Faces and dark clothing have soft midtone shading, visible fabric folds and continuous limbs. Umbrella fabric is smoothly shaded around thin connected ribs. Vehicles remain rigid with stable windows and grounded wheels. Remove the hard white contour glow around objects and recover gently shaded edges. Bright shop signs have a gradual highlight roll-off, while dark facades retain subtle surface detail. Wet pavement reflects the lights without large featureless white patches. Keep the same stable night exposure across all frames. During 00:00.708-00:00.917, retain the five repeated source tail frames as an unchanged final hold. The target reproduces this segment rather than continuing the action beyond it.
+
+overall_soundscape:
+N/A
+
+non_diegetic_music:
+N/A

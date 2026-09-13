@@ -1,0 +1,7 @@
+For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
+
+integrated_multimodal_description: [Shot 1] The snowy mountain slope in <Picture 1> continues as the same shot, with the yellow-jacketed snowboarder already gliding downhill. Over the next 0.917 seconds, the rider travels about one board length, maintaining the existing crouch and making a small continuous heel-side turn. A low following camera moves forward at the rider's steady speed and gently trucks right, showing parallax between the wooden direction sign, nearby rocks, conifers and distant mountain ridges. Snow displaced by the board remains close to the moving edge. The same soft sunlight, blue snow shadows, fine snow grain, jacket material and mountain outlines carry through the shot. No jump, cut or new action begins during this short interval.
+
+overall_soundscape: The snowboard scrapes softly over the snow, with a steady light wind.
+
+non_diegetic_music: N/A

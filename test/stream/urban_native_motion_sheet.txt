@@ -1,0 +1,5 @@
+integrated_multimodal_description: [Shot 1] Continue the rainy city intersection at night in one uninterrupted fixed-camera shot. <Picture 1> is the current boundary frame and the exact starting view. <Picture 2> is a labelled grid of past context: its upper-left panel records the initial appearance, and its other three panels show earlier history, recent history, and the current boundary in that order. These panels describe the past, not a future endpoint. Preserve the original building geometry, sign colors, wet-road texture, exposure and camera position. Continue each visible car and umbrella-carrying pedestrian naturally from their current positions and directions in <Picture 1>. Cars follow the established lanes and leave the view normally; pedestrians keep walking across the crossing. Steady rain and small ripples animate the road reflections. Keep the scene as a single full-frame view.
+
+overall_soundscape: N/A
+
+non_diegetic_music: N/A

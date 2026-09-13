@@ -1,0 +1,38 @@
+[
+  {
+    "name": "bilinear_std_857",
+    "sigmas": [
+      0.8571428571428571,
+      0.0
+    ],
+    "resize_method": "bilinear",
+    "match_std": true
+  },
+  {
+    "name": "bilinear_std_820",
+    "sigmas": [
+      0.82,
+      0.0
+    ],
+    "resize_method": "bilinear",
+    "match_std": true
+  },
+  {
+    "name": "bicubic_857",
+    "sigmas": [
+      0.8571428571428571,
+      0.0
+    ],
+    "resize_method": "bicubic",
+    "match_std": false
+  },
+  {
+    "name": "bicubic_std_857",
+    "sigmas": [
+      0.8571428571428571,
+      0.0
+    ],
+    "resize_method": "bicubic",
+    "match_std": true
+  }
+]

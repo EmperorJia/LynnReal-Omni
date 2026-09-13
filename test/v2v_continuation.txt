@@ -1,0 +1,5 @@
+integrated_multimodal_description: [Shot 1] Continue directly from the end of the input video as one uninterrupted photographic shot. The snowboarder carries the existing forward momentum down the snowy slope, bends both knees into the next broad carving turn, and leaves a fresh curved track with a low fan of powder. The camera follows at the same distance and speed. Retain the source rider, outfit, equipment, mountain landscape, lighting and exposure throughout the next five seconds. The action advances beyond the source ending with naturally paced body movement and stable physical contact between board and snow.
+
+overall_soundscape: Continuous wind, board scraping across packed snow, and soft powder spray.
+
+non_diegetic_music: N/A

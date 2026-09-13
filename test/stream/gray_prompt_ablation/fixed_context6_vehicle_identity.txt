@@ -1,0 +1,21 @@
+subject_definitions:
+<Video 1> is the structure rendition of the current street segment. It shows the current camera viewpoint, people, umbrellas, vehicles and their ongoing trajectories with appearance detail removed.
+<Subject 1> is the current scene layout and motion in <Video 1>.
+<Subject 2> is the photographic night appearance of the street in <Picture 1>, including natural skin and fabric shading, rigid vehicles, illuminated signs and wet-road materials.
+
+summary:
+[video editing + reference generation] The target video is an edited version of <Video 1>. Render the moving structure as natural color live-action footage with the materials and lighting of <Subject 2>.
+
+retention_analysis:
+<Video 1> (whole shot): partially_preserved - preserve its exact geometry, object count, positions, movement paths, speed, camera viewpoint and duration; replace the structure visualization with photographic color and texture.
+<Subject 1> (appears in [Shot 1]): fully_preserved - keep the current people and cars where the source places them at every corresponding frame.
+<Subject 2> (appearance throughout [Shot 1]): weak_reference - use its photographic material and lighting properties; do not copy its earlier person or car positions and do not add actors from the image.
+
+detailed_description:
+[Shot 1] Convert this 22-frame structural video at 24 fps into clear natural night footage. Throughout 00:00.000 to 00:00.917, each person and vehicle follows exactly the short current trajectory indicated in <Video 1>. Fill the structure with realistic color and surfaces: smoothly shaded faces, ordinary cloth folds, solid umbrella fabric around thin ribs, and rigid cars with coherent windows and wheels. Use the balanced night lighting and photographic surfaces of <Subject 2>. Illuminated signs have controlled highlights and dark buildings have continuous subtle shading. Wet pavement has soft colored reflections. The result is a full photographic image, with no line-drawing overlay, artificial white contours, flat black clothing or exaggerated edge contrast. Keep the camera viewpoint and current object count defined by the video, without returning to the image's earlier scene state. All 22 source frames are consecutive: the first six show the preceding motion and the remaining sixteen continue it. Preserve the same uninterrupted movement and frame timing across this transition. Maintain the same rendering and exposure throughout the segment. Preserve the source luminance ordering of vehicle surfaces: dark paint stays dark and pale paint stays pale. Each vehicle retains its own body shape, length, wheel locations and visible markings at the source positions. Use the reference image for balanced lighting only; its orange taxi paint is not a replacement color for other vehicles in the source.
+
+overall_soundscape:
+N/A
+
+non_diegetic_music:
+N/A

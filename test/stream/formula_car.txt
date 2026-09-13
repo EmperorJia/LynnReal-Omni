@@ -1,0 +1,5 @@
+integrated_multimodal_description: Continue the same red open-wheel race car from the rear view at the end of the input video. The car accelerates along the wet racing line, follows the road through a broad gentle bend, and keeps all four rotating wheels in contact with the asphalt. Its front and rear wings, exposed tires and seated helmeted driver remain attached in their original positions. Fine water spray trails behind the tires and disperses naturally. The camera follows smoothly from behind, keeping the car visible while track markings, curbs and barriers pass continuously. Preserve the overcast daylight, wet road, red bodywork and photographic motorsport style in one uninterrupted shot.
+
+overall_soundscape: N/A
+
+non_diegetic_music: N/A

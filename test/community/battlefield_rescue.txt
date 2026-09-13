@@ -1,0 +1,5 @@
+integrated_multimodal_description: [Shot 1] Live-action historical war cinematography, two helmeted medics sprint through a muddy trench carrying a wounded soldier on a canvas stretcher as a distant blast throws soil behind them; a handheld tracking camera moves backward rapidly, keeping faces, hands, uniforms, stretcher tension, and the same trench spatially coherent.
+
+overall_soundscape: Boots churn through mud, the stretcher frame rattles, strained breathing stays close, and one distant explosion rolls across the trench without masking shouted movement cues.
+
+non_diegetic_music: Low snare pulses and sustained cellos increasing slightly in volume.

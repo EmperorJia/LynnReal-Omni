@@ -1,0 +1,5 @@
+integrated_multimodal_description: [Shot 1] Continue the same underwater manta ray beside the coral reef in one uninterrupted underwater shot. <Picture 1> is the current boundary frame and exact starting view. <Picture 2> is a labelled grid of past context: its upper-left panel records the initial appearance, and its other panels show earlier history, recent history, and the current boundary in that order. These panels describe the past, not a future endpoint. Preserve the manta ray's body shape, two broad pectoral fins, attached slender tail and natural markings, the blue-green water, coral textures and softly filtered underwater daylight. Continue the ray's current swimming direction with slow, smooth fin strokes. The ray glides above the reef, makes a broad gentle bank and continues forward without touching the coral. Small fish drift in the surrounding water. The camera follows the existing movement smoothly at a steady distance, preserving scale and exposure in one full-frame view.
+
+overall_soundscape: N/A
+
+non_diegetic_music: N/A

@@ -1,0 +1,5 @@
+integrated_multimodal_description: [Shot 1] Continue the rainy city intersection at night in one uninterrupted fixed-camera shot. <Picture 1> is the current boundary frame and the exact starting view. <Picture 2> is the original video's first frame, an unchanged appearance reference. Preserve its original textures, material colors, contrast and exposure. It describes the past, not a future endpoint; continue movement from <Picture 1>. Preserve the original building geometry, sign colors, wet-road texture, exposure and camera position. Continue each visible car and umbrella-carrying pedestrian naturally from their current positions and directions in <Picture 1>. Cars follow the established lanes and leave the view normally; pedestrians keep walking across the crossing. Steady rain and small ripples animate the road reflections. Keep the scene as a single full-frame view.
+
+overall_soundscape: N/A
+
+non_diegetic_music: N/A

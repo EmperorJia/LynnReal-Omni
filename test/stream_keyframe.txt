@@ -1,0 +1,7 @@
+For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
+
+integrated_multimodal_description: [Shot 1] A continuous fixed-camera view of the same ocean and beach shown in the first frame. Preserve the shoreline, level horizon, viewing direction, natural water and cloud colors, and soft daylight of the first frame. Continue the visible waves from their current positions: each crest advances toward shore, breaks into foam, spreads over the wet sand and recedes before the following wave arrives. Keep the camera fixed and the illumination steady. The sky retains soft natural cloud texture while the water moves continuously. Maintain the same scene and visual appearance throughout the shot.
+
+overall_soundscape: N/A
+
+non_diegetic_music: N/A

@@ -1,0 +1,20 @@
+subject_definitions:
+<Subject 1> is the current people, vehicles, street geometry and continuous motion shown in <Video 1>.
+<Subject 2> is the natural photographic appearance of the rainy night street in <Picture 1>.
+
+summary:
+[video editing] The target video is an edited version of <Video 1>, rendered as ordinary full-color live-action footage with the photographic materials and lighting of <Subject 2>.
+
+retention_analysis:
+<Video 1> (whole shot): partially_preserved - retain the source composition, current object count, exact positions, motion paths, speed, camera viewpoint and duration; supply natural photographic color and surface detail.
+<Subject 1> (throughout [Shot 1]): fully_preserved - preserve every current person's and vehicle's position at the corresponding source time.
+<Subject 2> (appearance throughout [Shot 1]): weak_reference - use its color, skin tones, cloth materials, diffuse illumination and wet-road reflections. The source video defines the spatial arrangement.
+
+detailed_description:
+[Shot 1] A continuous tripod recording of this rainy street at night, 22 frames at 24 fps. From 00:00.000 to 00:00.708 the people and vehicles follow the small ongoing movements of <Video 1>. Faces have soft natural midtones, subtle skin texture and gentle transitions into shadow. Cloth shows fine woven texture and softly shaded folds. Umbrella fabric has a continuous surface with slender structural ribs. Cars retain rigid body panels, coherent windows and round wheels. Signs glow with the restrained brightness of the original night recording, while building facades retain their natural dark midtones. Colored reflections spread softly across wet pavement. Materials, exposure and camera viewpoint remain steady. From 00:00.708 to 00:00.917 the final source pose is held for the repeated tail frames.
+
+overall_soundscape:
+N/A
+
+non_diegetic_music:
+N/A

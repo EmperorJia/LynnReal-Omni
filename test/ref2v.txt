@@ -1,0 +1,14 @@
+subject_definitions:
+<Picture 1> defines the man, his patterned motocross clothing, and the off-road motorcycle.
+
+summary:
+A single fixed wide shot of the same man beside his motorcycle on a dirt hilltop.
+
+detailed_description:
+[Shot 1] Preserve the man's appearance, clothing and motorcycle from <Picture 1>. He slowly turns his head toward the camera and raises one gloved hand in a small greeting. The motorcycle remains stationary with both wheels touching the ground. Keep the forest, overcast sky and camera steady. No cuts or changes of identity.
+
+overall_soundscape:
+A light breeze through distant trees.
+
+non_diegetic_music:
+N/A

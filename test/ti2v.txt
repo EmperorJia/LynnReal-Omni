@@ -1,0 +1,11 @@
+subject_definitions: <Picture 1> is the first frame of [Shot 1], a live-action street-level view of Times Square at night. <Subject 1> is the wet city street, yellow taxis, pedestrians and illuminated buildings in <Picture 1>.
+
+summary: Continue forward from the first-frame photograph in one continuous live-action shot.
+
+retention_analysis: Preserve the viewpoint, street layout, building proportions, neon colors and night lighting from <Picture 1> throughout.
+
+detailed_description: [Shot 1] The camera stays at pedestrian eye level, looking across the wet road as shown in <Picture 1>. A yellow taxi rolls smoothly from right to left behind the foreground pedestrians, its tires following the road. People in dark coats walk naturally along the sidewalk, maintaining individual silhouettes. Reflections from the signs ripple slightly on the damp pavement as the taxi passes. The camera moves slowly forward a short distance without cutting.
+
+overall_soundscape: Distant traffic, a subdued engine passing across the stereo field, soft footsteps on wet pavement, faint city voices without intelligible dialogue.
+
+non_diegetic_music: None.

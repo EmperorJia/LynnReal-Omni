@@ -1,0 +1,4 @@
+interface:
+  display_name: "LynnReal DiT Prompt Writing"
+  short_description: "Write task-aware video prompts and test continuity"
+  default_prompt: "Use $lynnreal-prompt to rewrite this request for the actual LynnReal DiT task layout and preserve its visual state."

@@ -1,0 +1,7 @@
+For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
+
+integrated_multimodal_description: [Shot 1] The live-action dirt-bike scene in <Picture 1> continues in one uninterrupted shot. During the next 0.917 seconds, the seated rider gently turns his head a few degrees toward the track and shifts his right hand slightly on the handlebar while the motorcycle remains supported in its current position. The eye-level camera slowly trucks right with small amplitude, producing visible parallax between the motorcycle, the dirt ridge and the distant forest. The existing cloudy daylight, soft facial detail, black hair, printed jersey fabric, dusty tires and muted landscape colors remain consistent throughout this short movement. The shot continues beyond the interval, without a cut, a change of lighting or a completed new action.
+
+overall_soundscape: A light breeze passes over the ridge and the motorcycle engine idles steadily.
+
+non_diegetic_music: N/A

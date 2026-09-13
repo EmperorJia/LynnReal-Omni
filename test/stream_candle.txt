@@ -1,0 +1,5 @@
+integrated_multimodal_description: One uninterrupted locked macro shot of the same lit candle established by the input video. Preserve its exact candle, holder, background, scale, framing, exposure and warm lighting. Continue the small natural flicker from the latest flame shape. The wick remains fixed and the base of the flame stays attached to the wick. The flame gently bends and returns upright with subtle irregular motion, while the candle body, holder and background stay stationary. Maintain one continuous shot with no cuts, camera movement, scene changes, new objects or reset to an earlier flame shape.
+
+overall_soundscape: N/A
+
+non_diegetic_music: N/A

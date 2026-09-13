@@ -1,0 +1,54 @@
+__pycache__/
+*.pyc
+*.egg-info/
+*.dist-info/
+build/
+dist/
+
+# Native extensions and other compiled package artifacts are rebuilt locally.
+*.so
+*.dylib
+*.dll
+*.o
+*.a
+*.whl
+/model/kernels/
+
+# Download model bundles separately; keep local runs and IDE state private.
+/weight/
+/output/
+/sample/
+/.sii/
+.cache/
+.pytest_cache/
+
+# Local authentication and environment files must not enter the repository.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+
+# Keep sample inputs available, but do not publish internal test programs.
+/test/**/*.py
+/test/**/*.sh
+/test/**/*.ipynb
+
+# Publish only tools required by the inference entry points.
+/tool/*
+!/tool/sample_native_overlap.py
+!/tool/audit_structure_video_edit.py
+!/tool/audit_matched_edit_noise.py
+!/tool/audit_native_video_edit.py
+
+# Presentation production and internal experiment records remain local.
+/requirements-demo.txt
+/test/demo/
+/test/diagnostics/
+/test/regression/
+/test/stream/repair/
+/test/color_audit.md
+/test/color_encoding.json
+/test/stream/step400_validation_context.pt
+/skill/lynnreal-prompt/references/evaluation.md

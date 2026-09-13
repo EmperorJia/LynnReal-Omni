@@ -1,0 +1,21 @@
+subject_definitions:
+<Video 1> is the grayscale video to colorize.
+<Subject 1> is the existing moving scene in <Video 1>.
+<Subject 2> is the natural color and illumination in <Picture 1>.
+
+summary:
+[video editing] Colorize <Video 1> using <Subject 2>, retaining the current composition and movement frame by frame.
+
+retention_analysis:
+<Video 1> (entire [Shot 1]): partially_preserved - restore color and natural tonal shading; preserve its framing, geometry, frame order and duration.
+<Subject 1> (entire [Shot 1]): fully_preserved - keep the same objects, silhouettes, positions, trajectories and occlusions at the corresponding source times.
+<Subject 2> (appearance only): weak_reference - transfer balanced color and lighting, without copying its earlier arrangement of people or vehicles.
+
+detailed_description:
+[Shot 1] Recolor the existing source surfaces with one consistent, natural rendering. Preserve the source movement without restarting or extending an action. Keep texture attached to its moving surface and preserve the existing object boundaries. Restore smooth shading and controlled highlights without outlining or reshaping objects. Retain the source's repeated tail frames. The output is the same short moving scene with restored color, not a newly staged shot.
+
+overall_soundscape:
+N/A
+
+non_diegetic_music:
+N/A

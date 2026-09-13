@@ -1,0 +1,26 @@
+{
+  "t2v": {
+    "prompt": "t2v.txt"
+  },
+  "ti2v": {
+    "prompt": "ti2v.txt",
+    "images": [
+      "assets/times_square.png"
+    ]
+  },
+  "v2v": {
+    "prompt": "v2v.txt",
+    "images": [
+      "assets/snowboard_style.png"
+    ],
+    "videos": [
+      "assets/snowboard.mp4"
+    ]
+  },
+  "ref2v": {
+    "prompt": "ref2v.txt",
+    "images": [
+      "assets/rider.png"
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+subject_definitions:
+<Picture 1> defines the target appearance: alpine sports cinema.
+<Video 1> defines the source scene and its evolving camera and object motion.
+
+summary:
+[video editing] Render the source action in the materials and visual style of <Picture 1>.
+
+retention_analysis:
+<Picture 1>: attribute_transfer - transfer materials, palette and lighting to corresponding source surfaces.
+<Video 1>: partially_preserved - preserve evolving silhouettes, camera trajectory, relative scale, object contacts and occlusion order; replace the original materials and rendering style.
+
+detailed_description:
+[Shot 1] One continuous shot follows the action and camera progression visible in <Video 1>. The rider wears a yellow woven waterproof jacket, a molded black helmet and detailed backpack straps, riding one textured snowboard. Fine crystalline powder has soft blue shadows and warm sunlight. Pine needles, weathered rock and distant mountains are photographic. The board releases small powder trails at snow contact. The opening composition and every subsequent view use the appearance of <Picture 1>. As the source camera and objects move, textures remain attached to surfaces, occlusions reveal consistent object parts, and shadows follow actual contacts. Each subject advances through the original source action at its original speed. The material transformation remains visible across the complete scene throughout the shot.
+
+overall_soundscape:
+Quiet environmental ambience and contact sounds that follow the visible action. No dialogue.
+
+non_diegetic_music:
+N/A

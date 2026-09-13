@@ -1,0 +1,19 @@
+subject_definitions:
+<Video 1> supplies the current segment's structure and ongoing motion.
+<Picture 1> supplies the original scene's appearance, materials, colors and illumination.
+<Picture 2> is the last frame already delivered immediately before this segment. It supplies the current object inventory, positions and poses at the opening instant.
+
+summary:
+[video editing + reference generation] Edit <Video 1> into natural footage, preserving its temporal progression and continuing directly from <Picture 2>. Restore the appearance of <Picture 1> without restoring its earlier object arrangement.
+
+retention_analysis:
+Preserve the current scene, camera, existing objects and ongoing trajectories. Use <Picture 2> for opening geometry only; use <Picture 1> for materials and illumination only. The current video defines how the scene moves forward. Neither image is a pose to return to later. Repair rendering defects without adding new events or changing the action.
+
+detailed_description:
+[Shot 1] Match the opening composition to the last delivered frame, then continue each object's existing motion at the same pace and phase. Edit each source frame at its corresponding time, retaining the source duration and any terminal padding hold. Keep object identities, counts, shape and direction continuous across the opening boundary. A newly visible object must enter gradually from outside the view or emerge from a valid occlusion; nothing materializes in an unobstructed region. Do not restart, accelerate, slow, freeze or repeat an action to match either reference image. Reconstruct natural surface detail and smooth tonal shading using the original appearance reference. Correct exposure drift, glowing contours and distorted textures while preserving current geometry. Maintain steady illumination and camera behavior throughout. Produce only the edited segment; do not continue beyond it or invent an additional event.
+
+overall_soundscape:
+N/A
+
+non_diegetic_music:
+N/A

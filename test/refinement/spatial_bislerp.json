@@ -1,0 +1,20 @@
+[
+  {
+    "name": "bislerp094",
+    "sigmas": [
+      0.94,
+      0.8571428571428571,
+      0.0
+    ],
+    "resize_method": "bislerp"
+  },
+  {
+    "name": "bislerp092",
+    "sigmas": [
+      0.92,
+      0.8571428571428571,
+      0.0
+    ],
+    "resize_method": "bislerp"
+  }
+]

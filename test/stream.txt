@@ -1,0 +1,5 @@
+integrated_multimodal_description: A continuous fixed-camera view of ocean waves, preserving the shoreline, horizon, light and viewing direction established by the preceding video. Continue each approaching wave naturally from its current position: the crest rolls toward shore, breaks into foam, and the foam spreads and recedes across the wet sand before the next wave arrives. The camera stays in the same position throughout, with no cuts, resets or changes of scene. The movement carries forward from the latest frame rather than returning to the opening wave.
+
+overall_soundscape: N/A
+
+non_diegetic_music: N/A

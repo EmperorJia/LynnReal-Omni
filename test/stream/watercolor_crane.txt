@@ -1,0 +1,5 @@
+integrated_multimodal_description: Continue the single red-crowned crane's rightward flight from the final frame of the input watercolor animation. Preserve the same crane, its red crown, white body, black wing feathers, slender legs, fine ink outlines and pale textured paper. The wings continue a smooth cycle of downstroke and recovery, with both wings attached naturally to the shoulders and the legs trailing behind. A gentle lateral camera track keeps the flying crane in view while the pond, lily pads and reeds slide slowly to the left. Keep the watercolor palette and soft daylight steady throughout one uninterrupted shot.
+
+overall_soundscape: N/A
+
+non_diegetic_music: N/A

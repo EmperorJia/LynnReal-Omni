@@ -1,0 +1,15 @@
+subject_definitions:
+<Subject 1> is the rainy city intersection in <Picture 1>, providing the building geometry, wet road materials, sign colors, photographic texture and original exposure.
+
+summary:
+[reference generation] 2.3 seconds of continuous night street footage in <Subject 1>, with pedestrians crossing and traffic passing through a fixed camera view. The reference supplies the environment and its appearance throughout the shot.
+
+retention_analysis:
+<Subject 1> (throughout [Shot 1]): fully_preserved - preserve the architecture, road layout, material detail, original brightness and color balance. Pedestrians and vehicles move freely through the scene; their identities and initial arrangement are not reference requirements.
+
+detailed_description:
+Photographic night footage with the exposure and natural colors of <Subject 1>. [Shot 1] A stationary street-level camera looks across the wet intersection. The buildings, crossing markings, signs and traffic lights retain the geometry visible in <Picture 1>. The camera holds its position, focal length and framing for the entire 2.3 seconds. Pedestrians with umbrellas walk across the foreground at an ordinary pace, stepping through shallow puddles and continuing out of view. Other pedestrians can enter naturally from the edges. Cars travel through the existing lanes and leave the frame, with their reflections moving across the wet pavement beneath them. Fine steady rain and small ripples animate the road surface. The static environment retains the original frame's photographic exposure: illuminated signs retain their colored lettering and internal detail; dark facades remain dark with visible window structure. Wet asphalt has soft, localized reflections rather than a uniformly bright surface. Neutral tones, gentle highlight transitions and restrained saturation remain steady as people and cars pass. The reference defines the scene's materials and lighting, while movement continues forward throughout the shot.
+
+overall_soundscape: N/A
+
+non_diegetic_music: N/A

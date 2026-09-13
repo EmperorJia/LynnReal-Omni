@@ -1,0 +1,21 @@
+subject_definitions:
+<Video 1> is the grayscale source footage for this edit.
+<Subject 1> is the existing scene recorded in <Video 1>, including its people, vehicles, umbrellas and buildings.
+<Subject 2> is the restrained night-time color palette of <Picture 1>.
+
+summary:
+[video editing] Restore restrained color to <Video 1>, preserving the recorded shot.
+
+retention_analysis:
+<Video 1> (entire [Shot 1]): partially_preserved - add color while retaining its luminance detail, framing, frame order and duration.
+<Subject 1> (entire [Shot 1]): fully_preserved - retain each visible surface, silhouette, occlusion and movement at its source-frame position.
+<Subject 2> (color only): weak_reference - use the image's color balance on corresponding materials already visible in the source video.
+
+detailed_description:
+[Shot 1] This is the same brief street recording, now in natural color. The source footage already supplies the complete scene and its motion. Color follows the existing surface detail: skin, clothing, umbrella fabric, vehicle panels, signs and wet pavement retain their source shapes and shading. Keep each surface's chosen color stable as it moves or is partially occluded. Neutral surfaces whose color is uncertain remain neutral. Bright signs retain the source lettering and controlled highlights. Preserve the pedestrians' existing gait phase, each vehicle's displacement, and the source camera position at every corresponding frame. Preserve the repeated source tail. Only color changes; the recorded action and scene layout remain the same.
+
+overall_soundscape:
+N/A
+
+non_diegetic_music:
+N/A

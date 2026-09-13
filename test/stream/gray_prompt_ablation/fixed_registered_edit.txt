@@ -1,0 +1,21 @@
+subject_definitions:
+<Video 1> is the grayscale source segment to edit, defining the current composition and ongoing movement.
+<Subject 1> is the set of people, vehicles and other objects currently visible in <Video 1>.
+<Subject 2> is the natural color, surface appearance and illumination in the original image <Picture 1>.
+
+summary:
+[video editing + reference generation] Restore natural color and smooth surface shading to <Video 1>, using <Subject 2> as an appearance reference while keeping the source segment spatially and temporally aligned.
+
+retention_analysis:
+<Video 1> (whole shot): partially_preserved - preserve framing, duration, object positions and temporal progression; restore photographic color and shading.
+<Subject 1> (throughout [Shot 1]): fully_preserved - retain the existing silhouettes, sizes, object inventory and continuous trajectories at the corresponding source times.
+<Subject 2> (appearance throughout [Shot 1]): weak_reference - transfer materials and balanced illumination only. Its earlier object arrangement is not the target composition.
+
+detailed_description:
+[Shot 1] Apply one consistent photographic rendering to the entire source segment. Keep faces, clothing, umbrellas, vehicles and background edges registered to their source locations as they move. Surface details remain attached to the same moving surfaces. Maintain smooth tonal gradients, restrained highlights and naturally soft edges. Continue each existing movement through the opening instant at its ongoing pace and phase. Preserve the source frame order and any repeated padding at its end. Objects remain present until they leave the view or are occluded; preserve these entrances, exits and occlusions without adding objects from the reference image. The camera and background geometry remain aligned with the source. Restore color and shading without restaging the scene, restarting an action or drawing bright outlines around silhouettes.
+
+overall_soundscape:
+N/A
+
+non_diegetic_music:
+N/A

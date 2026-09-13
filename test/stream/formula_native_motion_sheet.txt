@@ -1,0 +1,5 @@
+integrated_multimodal_description: [Shot 1] Continue the same red open-wheel race car on the wet track in one uninterrupted tracking shot. <Picture 1> is the current boundary frame and exact starting view. <Picture 2> is a labelled grid of past context: its upper-left panel records the initial appearance, and its other panels show earlier history, recent history, and the current boundary in that order. These panels describe the past, not a future endpoint. Preserve the red bodywork, attached wings, four exposed tires, seated helmeted driver, wet asphalt, overcast light and photographic motorsport style. From its current position, the car continues smoothly forward along the racing line and follows the track through a broad gentle bend. Its tires roll in contact with the road and leave fine water spray. The camera follows at a steady distance and height behind the car while curbs and road markings pass continuously. Keep one full-frame view.
+
+overall_soundscape: N/A
+
+non_diegetic_music: N/A

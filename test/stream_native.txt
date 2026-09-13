@@ -1,0 +1,19 @@
+subject_definitions:
+<Video 1> is the actual preceding ocean video. It establishes the shoreline, horizon, fixed camera, daylight and ongoing wave motion.
+<Subject 1> is the same ocean and beach, continuing beyond the last input frame.
+
+summary:
+[video continuation] Continue the approaching waves from their current positions in one uninterrupted fixed-camera shot.
+
+retention_analysis:
+<Video 1>: partially_preserved - keep scene geometry, water and sky colors, camera and daylight; advance the wave motion beyond the input.
+<Subject 1>: fully_preserved - the same sea, shoreline and beach throughout the continuation.
+
+detailed_description:
+[Shot 1] Ocean waves continue to roll toward the same shore. Each existing crest advances, breaks into white foam, and spreads over the wet sand before receding. The next wave follows naturally. Keep the original fixed camera, level horizon, neutral daylight and stable water and cloud colors. Maintain the current direction and speed of movement instead of restarting the opening wave. The scene remains a continuous natural ocean view without a cut, lighting transition or change in rendering style.
+
+overall_soundscape:
+N/A
+
+non_diegetic_music:
+N/A

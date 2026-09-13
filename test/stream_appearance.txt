@@ -1,0 +1,5 @@
+integrated_multimodal_description: [Shot 1] Continue the input video in one uninterrupted shot. <Picture 1> is the exact current boundary: continue its subject positions, poses and camera view forward naturally. <Picture 2> is the input video's original first frame, retained as an appearance reference. Preserve its materials, fine textures, colors, lighting and exposure. The reference describes the past, not a future endpoint. Preserve each subject's identity and shape while continuing the established action at normal speed. Keep the scene in one full-frame view.
+
+overall_soundscape: N/A
+
+non_diegetic_music: N/A

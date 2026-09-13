@@ -1,0 +1,21 @@
+subject_definitions:
+<Video 1> is the current rainy nighttime street clip to edit.
+<Subject 1> is its current street scene, including the pedestrians, umbrellas, vehicles and buildings.
+<Subject 2> is the original photographic rendering shown in two crops: background materials and night lighting in <Picture 1>, and softly shaded skin and fabric in <Picture 2>.
+
+summary:
+[video editing + reference generation] The target video is an edited version of <Video 1>. Restore its photographic surface detail and exposure using <Subject 2> while preserving the exact current source layout and action.
+
+retention_analysis:
+<Video 1> (whole shot): fully_preserved - keep its camera trajectory, framing, duration and exact motion timing.
+<Subject 1> (appears in [Shot 1]): partially_preserved - preserve current actors, object positions, identities, poses and trajectories; replace degraded surface shading and damaged texture.
+<Subject 2> (surface appearance throughout [Shot 1]): weak_reference - use only the photographic tonal gradation, skin shading, cloth texture and material response. The crops supply no target placement or camera composition. Do not insert the cropped person as an additional actor.
+
+detailed_description:
+[Shot 1] Edit all 22 source frames at 24 fps into natural live-action footage. From 00:00.000 to 00:00.708, every pedestrian, umbrella and car follows its existing position and displacement in <Video 1>. Restore softly shaded facial features, continuous skin tones and real fabric folds, using the natural rendering of <Subject 2>. The current umbrellas have fine connected ribs beneath solid fabric. Cars stay rigid with stable windows, wheels and restrained reflections. Restore the background's smooth night illumination and dark facade texture. Bright signs retain visible structure; wet road reflections have a continuous tonal range. Replace white contour artifacts, crushed flat-black clothing and stretched surface detail with photographic materials. Preserve all current object counts and placements; no actor or vehicle is reintroduced from the appearance crops. Keep the camera on the current source path. From 00:00.708 to 00:00.917, retain the five repeated tail frames as the same final hold. Apply the repair steadily across the entire shot.
+
+overall_soundscape:
+N/A
+
+non_diegetic_music:
+N/A

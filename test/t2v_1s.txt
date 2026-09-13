@@ -1,0 +1,5 @@
+integrated_multimodal_description: [Shot 1] One continuous, roughly one-second close-up of a white porcelain teapot already pouring a thin unbroken stream of amber tea into a matching cup on a wooden table. During this brief moment the tea level rises slightly and a delicate wisp of steam drifts upward. The camera stays completely still; the spout, cup and table remain stable under warm morning window light.
+
+overall_soundscape: A brief soft trickle of tea over quiet indoor room tone.
+
+non_diegetic_music: No music.

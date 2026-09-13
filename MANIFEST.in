@@ -1,0 +1,30 @@
+include _build_backend.py
+include .gitignore .gitattributes
+include requirements.txt README.md LICENSE
+recursive-include model *.py
+recursive-include script *.py *.sh *.md
+recursive-include docs *.md *.svg
+recursive-include skill *.md
+# Explicit runtime dependency closure; other tools are internal.
+prune tool
+include tool/sample_native_overlap.py
+include tool/audit_structure_video_edit.py
+include tool/audit_matched_edit_noise.py
+include tool/audit_native_video_edit.py
+# Samplers read these example inputs; internal test programs stay private.
+recursive-include test *.txt *.json *.md *.png *.jpg *.jpeg *.webp *.mp4 *.wav *.flac
+recursive-exclude test *.py *.sh *.ipynb
+prune test/demo
+prune test/diagnostics
+prune test/regression
+prune test/stream/repair
+exclude requirements-demo.txt test/color_audit.md test/color_encoding.json
+exclude skill/lynnreal-prompt/references/evaluation.md
+prune weight
+prune output
+prune sample
+prune model/kernels
+prune .sii
+prune build
+prune dist
+global-exclude *.pyc *.pyo .env .env.* *.pem *.key credentials.json

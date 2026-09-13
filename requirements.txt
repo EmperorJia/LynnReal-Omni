@@ -1,0 +1,21 @@
+# Python 3.12 / 3.13; pinned upstream H3 implementation, no training-repository imports.
+diffusers @ https://github.com/huggingface/diffusers/archive/abc5e9bf71fd38f53cd471bc3acaa84bc5ecbfdc.tar.gz
+torch==2.7.1
+torchvision==0.22.1
+torchaudio==2.7.1
+transformers==5.10.2
+accelerate==1.13.0
+peft==0.19.1
+safetensors==0.8.0
+huggingface-hub==1.23.0
+numpy==2.4.6
+pillow==12.2.0
+sentencepiece==0.2.1
+imageio-ffmpeg==0.6.0
+av==17.0.1
+einops==0.8.2
+scipy==1.17.1
+packaging>=24
+ninja>=1.11
+setuptools>=77
+wheel>=0.45
