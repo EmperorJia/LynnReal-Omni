@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <strong>Video generation, references, motion controls and editing — built on MiniMax H3.</strong>
+  <strong>Video generation, references, motion controls and editing.</strong>
 </p>
 
 <p align="center">
@@ -17,7 +17,7 @@
 </p>
 
 > [!IMPORTANT]
-> **This repository is an early beta and still has known limitations and unfinished features. Bugs, compatibility issues and inconsistent generation quality may remain. Thank you for your patience and understanding as we continue improving it.**
+> **This repository is an early beta and still has known limitations and unfinished features. Bugs, compatibility issues and inconsistent generation quality may remain. Thank you for your patience and understanding as we continue improving it. We plan to release the training code, part of the training data, and a more efficient dit in the future.**
 
 ## Overview
 
