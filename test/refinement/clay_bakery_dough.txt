@@ -1,5 +1,0 @@
-integrated_multimodal_description: [Shot 1] Detailed stop-motion claymation inside a tiny bakery, a round clay baker flips a soft disk of dough upward, catches it neatly on one fist, and dusts it with a visible puff of flour; the static medium shot preserves handmade fingerprints, miniature utensils, warm oven light, and intentional frame-by-frame motion.
-
-overall_soundscape: Dough lands with a soft slap, wooden tools clack, flour puffs gently, and a small oven fire crackles in the background.
-
-non_diegetic_music: Playful pizzicato strings at a brisk even tempo.

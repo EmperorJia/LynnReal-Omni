@@ -1,5 +1,0 @@
-integrated_multimodal_description: [Shot 1] Live-action cyberpunk action cinematography at night, a helmeted rider on a black electric motorcycle enters a neon intersection and performs a controlled sideways drift around a delivery drone; the camera orbits at fast speed as wet-road reflections, tire smoke, rider anatomy, motorcycle geometry, drone position, and storefront lights remain coherent.
-
-overall_soundscape: The electric motor whines upward, the rear tire scrubs wet asphalt, spray and smoke trail outward, and the drone emits a rapid proximity alarm.
-
-non_diegetic_music: Fast distorted synthesizer arpeggios over a heavy electronic kick pattern.
