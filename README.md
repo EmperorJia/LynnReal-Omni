@@ -29,7 +29,7 @@
 
 [![Watch the LynnReal-Omni demo on YouTube](docs/demo-cover.jpg)](https://www.youtube.com/watch?v=P5Bl2mriEmk)
 
-Click the image above to watch the demo on [YouTube](https://www.youtube.com/watch?v=P5Bl2mriEmk).
+Watch the demo on [YouTube](https://www.youtube.com/watch?v=P5Bl2mriEmk) or [Bilibili](https://www.bilibili.com/video/BV12vYB6BEjc/).
 
 ## Overview
 
