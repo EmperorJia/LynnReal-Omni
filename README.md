@@ -31,8 +31,6 @@
 
 ## Demo
 
-[![Watch the compressed demo preview](docs/demo-preview-poster.jpg)](docs/lynnreal-demo-preview.mp4)
-
 *Preview compressed to ~10 MB for this repository; for the full-quality demo, click the YouTube
 or Bilibili link below.*
 
