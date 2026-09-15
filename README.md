@@ -31,6 +31,7 @@
 
 ## Demo
 https://github.com/user-attachments/assets/25b49015-cf5a-4eb3-b7f9-165c3176db3e
+
 *Preview compressed to ~10 MB for this repository; for the full-quality demo, click the YouTube
 or Bilibili link below.*
 
