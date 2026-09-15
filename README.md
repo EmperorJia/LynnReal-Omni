@@ -20,6 +20,8 @@
 </p>
 
 > [!IMPORTANT]
+> 🔥 **ComfyUI is now supported!** Workflows for t2v, i2v, r2v, pose2v and v2v, the node pack
+> they need and every weight they load are in [`comfyui/`](comfyui/) — see [ComfyUI](#comfyui).
 > **This repository is an early beta and still has known limitations and unfinished features. Bugs, compatibility issues and inconsistent generation quality may remain. Thank you for your patience and understanding as we continue improving it. We plan to release the training code, part of the training data, and a more efficient dit in the future.**
 
 ## Paper
