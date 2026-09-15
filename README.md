@@ -31,6 +31,10 @@
 
 ## Demo
 
+<video src="https://raw.githubusercontent.com/LynnReal-AI/LynnReal-Omni/main/docs/lynnreal-demo-preview.mp4" controls></video>
+
+*Compressed preview — for the full-quality demo, click the YouTube or Bilibili link below.*
+
 | YouTube | Bilibili |
 | :---: | :---: |
 | [![Watch the LynnReal-Omni demo on YouTube](docs/demo-cover.jpg)](https://www.youtube.com/watch?v=P5Bl2mriEmk) | [![Watch the LynnReal-Omni demo on Bilibili](docs/demo-cover.jpg)](https://www.bilibili.com/video/BV12vYB6BEjc/) |
