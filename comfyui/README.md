@@ -58,12 +58,9 @@ The embedding is optional: the demo prompts reference it as
 | `qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors` | 14.6 GiB | `models/text_encoders/` | [Comfy-Org/MiniMax-H3](https://huggingface.co/Comfy-Org/MiniMax-H3) |
 | `minimaxh3_art_is_explosion.safetensors` | 500 KiB | `models/embeddings/` | [Comfy-Org/MiniMax-H3](https://huggingface.co/Comfy-Org/MiniMax-H3) |
 
-💨 **The Flash three-step checkpoint is coming — we are pushing it out as fast as we can**, as a
-separate release together with its Light VAE. On an H100 80 GB a 1344×768, five-second t2v takes
-about **7–8 s of GPU kernel time** (three denoiser steps plus video decoding — the ≈8 s figure we
-quote for Flash) with the official scripts. The ComfyUI port is not there yet: the same request
-currently needs ~12.6 s of GPU time and ~17 s warm wall clock including file encoding, and
-closing that gap is part of the packaging work.
+💨 **The Flash three-step checkpoint is coming** — we are hurrying it out as a separate release
+with its Light VAE. On an H100 80 GB it generates a 1344×768 five-second t2v in about **10 s**
+warm (three denoiser steps plus decoding).
 
 ## The INT8 switch
 
