@@ -61,7 +61,6 @@ The embedding is optional: the demo prompts reference it as
 💨 **The Flash three-step checkpoint is coming — we are pushing it out as fast as we can**, as a
 separate release together with its Light VAE. On an H100 80 GB a 1344×768, five-second t2v takes
 about **7–8 s of GPU kernel time** (three denoiser steps plus video decoding — the ≈8 s figure we
-quote for Flash) with the official scripts. The ComfyUI port is not there yet: the same request currently needs
 quote for Flash) with the official scripts. The ComfyUI port is not there yet: the same request
 currently needs ~12.6 s of GPU time and ~17 s warm wall clock including file encoding, and
 closing that gap is part of the packaging work.
