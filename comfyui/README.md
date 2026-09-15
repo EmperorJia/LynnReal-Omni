@@ -68,15 +68,6 @@ release's `--precision int8` path (per-output-channel weight scales, per-token a
 scales, INT32 accumulate; block 0, the last block, the token refiner, adaLN and the IO
 projections stay BF16).
 
-- warm runs are ~8 s faster (41.4 GiB resident instead of 61.7 GiB, so the DiT, the text
-  encoder and both VAEs fit at once) and the file is 44.5 GB on disk instead of 66.3 GB;
-- it is **not the same sample**: quantization shifts the sampling trajectory, so a fixed seed
-  gives a different composition (measured against bf16 at the same seed: 14.8 dB PSNR). Both
-  are the same style and quality — keep the switch off when you want seed-to-seed comparison;
-- the unselected branch is lazy, so leaving the switch off costs nothing;
-- `pose2v` turns it **on** by default because the pose control graph packs reference and target
-  into one sequence and does not fit next to a fully resident bf16 DiT.
-
 ## Install
 
 1. ComfyUI recent enough to have MiniMax-H3 (`comfy/ldm/minimax/`), `ResolutionSelector`,
