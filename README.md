@@ -12,6 +12,7 @@
   <a href="#overview">Overview</a> &nbsp;·&nbsp;
   <a href="#models">Models</a> &nbsp;·&nbsp;
   <a href="#quick-start">Quick start</a> &nbsp;·&nbsp;
+  <a href="#comfyui">ComfyUI</a> &nbsp;·&nbsp;
   <a href="#tasks">Tasks</a> &nbsp;·&nbsp;
   <a href="#usage-guides">Usage guides</a> &nbsp;·&nbsp;
   <a href="#roadmap">Roadmap</a> &nbsp;·&nbsp;
@@ -161,6 +162,36 @@ Choose a new output name for each run.
 Keep prompt, seed, geometry, references and attention backend fixed for comparisons.
 Changing attention precision can change a four-step result. Standard BF16 defaults
 to the native attention backend and official VAE.
+
+## ComfyUI 🧩
+
+**We also ship a ComfyUI port — it is open, and you are very welcome to try it! 🎉**
+
+[`comfyui/`](comfyui/) contains workflows for **t2v, i2v, r2v, pose2v and v2v**, the small
+custom node pack they need (`ComfyUI-LynnReal`), the demo assets the workflows load, and the
+exact model files each task needs. Those files are published in ComfyUI format alongside the
+release weights on Hugging Face under
+[🤗 stdstu123/LynnReal-Onmi-beta-0.1 · comfyui/models](https://huggingface.co/stdstu123/LynnReal-Onmi-beta-0.1/tree/main/comfyui/models).
+Drop the workflows, the node pack and the models into your ComfyUI install and they run — no
+launcher flags needed. Every task, its workflow and the weights it loads are listed in
+[`comfyui/README.md`](comfyui/README.md).
+
+> [!WARNING]
+> **The ComfyUI port is experimental and under active construction 🚧**
+>
+> - It runs the same checkpoints and the same schedules, but the pipeline around them is
+>   ComfyUI's, so **performance numbers should be taken from the original scripts** in
+>   [`script/sample/`](script/sample/) — those are the reference implementation and the ones
+>   quoted in the paper. The port is measurably slower than the scripts today (fewer fused
+>   kernels, a different attention backend and no Hopper-specific INT8 grouping yet).
+> - Same-seed output is **not** comparable between the two engines: the noise source and the
+>   decoder path differ. Compare quality, not pixel identity.
+> - The port currently covers the Standard four-step checkpoints, with an optional INT8 switch
+>   on the canvas (off by default, except `pose2v`) backed by
+>   `lynnreal_omni_standard_int8.safetensors`. The Flash three-step variant is isolated for now
+>   and will follow in a later release.
+> - We will keep improving it — speed, memory, more tasks and cleaner packaging are all on the
+>   list. **Issues and pull requests are very welcome!** 🙌
 
 ## Tasks
 
