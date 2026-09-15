@@ -8,6 +8,7 @@
 
 <p align="center">
   <a href="docs/LynnReal-Omni-Paper.pdf">Paper</a>  &nbsp;·&nbsp;
+  <a href="#introduction">Introduction</a> &nbsp;·&nbsp;
   <a href="#overview">Overview</a> &nbsp;·&nbsp;
   <a href="#models">Models</a> &nbsp;·&nbsp;
   <a href="#quick-start">Quick start</a> &nbsp;·&nbsp;
@@ -31,6 +32,32 @@
 | :---: | :---: |
 | [![Watch the LynnReal-Omni demo on YouTube](docs/demo-cover.jpg)](https://www.youtube.com/watch?v=P5Bl2mriEmk) | [![Watch the LynnReal-Omni demo on Bilibili](docs/demo-cover.jpg)](https://www.bilibili.com/video/BV12vYB6BEjc/) |
 | [Watch on YouTube ↗](https://www.youtube.com/watch?v=P5Bl2mriEmk) | [Watch on Bilibili ↗](https://www.bilibili.com/video/BV12vYB6BEjc/) |
+
+## Introduction
+
+**One model, unified across many video tasks.** Built on a 32B shared multimodal
+diffusion transformer (following the MiniMax H3 architecture), LynnReal-Omni
+brings text-to-video, image-to-video, human- and hand-pose guided generation,
+structural control, omni-reference generation, style transfer, video editing,
+degraded-video restoration (we find that it also repairs videos affected by
+accumulated error) and streaming long-video generation into a single framework,
+all at four-step fast generation. It also accepts heterogeneous inputs such as
+appearance references, editable 3D renders and game recordings, so an Agent can
+compose visual conditions inside one model.
+
+**Flash, built for real-time rendering.** We train a 27B LynnReal-Omni-Flash
+(three-step generation) that lowers inference cost through model and decoding
+acceleration and a lightweight VAE decoder. On a single H100, warm generation
+and decoding of a 22-frame 540p video takes 843 ms with the Standard model and
+377 ms with Flash, laying the groundwork for real-time streaming video
+generation.
+
+**Data pipeline and MSAVP evaluation.** We build a systematic multi-shot and
+omni-reference data pipeline covering video cleaning, subject association,
+multimodal annotation and alignment control. From the large corpus of collected
+videos we select a high-quality multi-shot audio-visual subset and extract a
+variety of omni-reference condition controls. We also propose MSAVP for
+evaluating multi-shot audio-visual generation.
 
 ## Overview
 
