@@ -58,7 +58,11 @@ The embedding is optional: the demo prompts reference it as
 | `qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors` | 14.6 GiB | `models/text_encoders/` | [Comfy-Org/MiniMax-H3](https://huggingface.co/Comfy-Org/MiniMax-H3) |
 | `minimaxh3_art_is_explosion.safetensors` | 500 KiB | `models/embeddings/` | [Comfy-Org/MiniMax-H3](https://huggingface.co/Comfy-Org/MiniMax-H3) |
 
-The Flash three-step checkpoint and its Light VAE are being organised for a separate release.
+💨 **The Flash three-step checkpoint is coming — we are pushing it out as fast as we can**, as a
+separate release together with its Light VAE. It already runs a 1344×768 t2v in ComfyUI in about
+**17 s** wall clock on an H100 80 GB (measured warm: 10.5 s for the three denoiser steps, 3.3 s
+to decode, 3.4 s to encode), against ~50 s for the Standard four-step graph on the same card;
+what is left is the packaging for release.
 
 ## The INT8 switch
 
