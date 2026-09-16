@@ -26,7 +26,7 @@
 
 ## Paper
 
-> [LynnReal-Omni: Native multi-modal Video Generation for Agentic Visual Workflows](docs/LynnReal-Omni-Paper.pdf)  
+> [LynnReal-Omni: Native multi-modal Video Generation for Agentic Visual Workflows](https://arxiv.org/abs/2609.15863)  
 > Technical report, September 2026.
 
 ## Demo
