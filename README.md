@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <a href="docs/LynnReal-Omni-Paper.pdf">Paper</a>  &nbsp;·&nbsp;
+  <a href="https://arxiv.org/abs/2609.15863">Paper</a>  &nbsp;·&nbsp;
   <a href="#introduction">Introduction</a> &nbsp;·&nbsp;
   <a href="#overview">Overview</a> &nbsp;·&nbsp;
   <a href="#models">Models</a> &nbsp;·&nbsp;
