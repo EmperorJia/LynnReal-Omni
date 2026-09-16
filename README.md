@@ -88,9 +88,9 @@ will become downloadable as their uploads are completed.
 
 | Model | Sampling | Weights | Status |
 | :--- | :--- | :--- | :--- |
-| **Standard** · BF16 DiT | 4 steps | [Hugging Face ↗](https://huggingface.co/stdstu123/LynnReal-Onmi-beta-0.1) | Upload planned |
+| **Standard** · BF16 DiT | 4 steps | [Hugging Face ↗](https://huggingface.co/stdstu123/LynnReal-Onmi-beta-0.1) | Completed |
 | **Flash** · W8A8 DiT | 3 steps | [Hugging Face ↗](https://huggingface.co/stdstu123/LynnReal-Onmi-flash-beta-0.1) | Upload planned |
-| **Lightweight VAE** | Optional codec | [Hugging Face ↗](https://huggingface.co/stdstu123/LynnReal-Onmi-light-vae) | Upload planned |
+| **Lightweight VAE** | Optional codec | [Hugging Face ↗](https://huggingface.co/stdstu123/LynnReal-Onmi-light-vae) | Completed |
 | **Standard DiT INT8** | 4 steps | To be announced | **Coming soon** |
 
 Place each downloaded bundle under `weight/`, preserving its configurations and
