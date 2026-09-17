@@ -17,6 +17,7 @@
   <a href="#usage-guides">Usage guides</a> &nbsp;·&nbsp;
   <a href="#roadmap">Roadmap</a> &nbsp;·&nbsp;
   <a href="#acknowledgments">Acknowledgments</a>
+  <a href="#acknowledgments">Citation</a>
 </p>
 
 > [!IMPORTANT]
