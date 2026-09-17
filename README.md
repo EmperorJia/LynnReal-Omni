@@ -561,6 +561,21 @@ community's reproducible bug reports and feedback.
 Please see [LICENSE](LICENSE), [NOTICE](NOTICE), and the respective upstream
 projects for their license terms and attribution notices.
 
+### Citation
+If you use Yume for your research, please cite our paper:
+
+```bibtex
+@misc{mao2026lynnrealomninativemultimodalvideo,
+      title={LynnReal-Omni: Native multi-modal Video Generation for Agentic Visual Workflows}, 
+      author={Xiaofeng Mao and Peijia Lin and Shaohao Rui and Yibo Zhang and Haibin Wan and Weijie Ma},
+      year={2026},
+      eprint={2609.15863},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2609.15863}, 
+}
+```bibtex
+
 ---
 
 <p align="center">
