@@ -81,8 +81,8 @@ projections stay BF16).
    `PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True` is recommended.
 
    **VRAM:** the node pack keeps ComfyUI's own reserve, which keeps the 61.7 GiB DiT and the
-   15 GiB text encoder resident — a warm 4-step 1344×768 t2v runs in ~50 s. Reserving VRAM
-   instead makes ComfyUI evict the text encoder between runs (measured 46 s → 85 s).
+   15 GiB text encoder resident — a warm 4-step 1344×768 five-second t2v runs in ~50 s.
+   Reserving VRAM instead makes ComfyUI evict the text encoder between runs (measured 46 s → 85 s).
    `pose2v` defaults to INT8, so it fits without any flag; if you flip it back to bf16, run it
    with `--reserve-vram 10` (or `LYNNREAL_RESERVE_VRAM=10`).
 
