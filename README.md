@@ -574,9 +574,6 @@ If you use Yume for your research, please cite our paper:
       primaryClass={cs.CV},
       url={https://arxiv.org/abs/2609.15863}, 
 }
-```bibtex
-
----
 
 <p align="center">
   <strong>Thank you for trying LynnReal-Omni.</strong><br>
