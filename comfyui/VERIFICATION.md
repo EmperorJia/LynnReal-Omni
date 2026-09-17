@@ -67,11 +67,12 @@ Prompt executed in 70.0 seconds        # 冷启动，含 40GB DiT + 15GB 文本�
 （背景 mean|d| ≈ 1.2，差异像素 ≈ 8），没有分块接缝、没有位移，部分帧逐位相同。
 来源是 cuDNN/triton 的运行时 kernel 选择，与本次改动无关（关掉编译后依然存在）。
 
-## 5. 复现命令（在 7227 上）
+## 5. 复现命令
 
 ```bash
-C=/inspire/qb-ilm/project/3d-display/linpeijia-240108120084/ComfyUI
-E=/inspire/qb-ilm/project/3d-display/public/conda/envs/lynnreal-comfyui/bin/python
+# 指向你的 ComfyUI 目录与它的 python
+C=<ComfyUI>
+E=<ComfyUI 的 python>
 
 # 静态检查
 cd $C && $E tools/verify_node_pack.py

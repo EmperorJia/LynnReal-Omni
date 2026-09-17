@@ -10,6 +10,13 @@ Three things the LynnReal release needs that stock ComfyUI does not do by itself
 
 Plus ``LynnRealAlignedReference`` for the pose/hand control workflows.
 
+``attention_fa3`` injects the release's FlashAttention 3 path into the Flash graph only (the
+Flash token-compression node hands each block its attention callable) and ``bench`` measures
+the release's per-stage timings when ``LYNNREAL_TIMING=1``.
+
+``int8_fast`` takes comfy-kitchen's per-shape INT8 autotune out of the request path, so that
+editing a prompt no longer re-tunes the quantised GEMMs before the first denoising step.
+
 Every module here is a plain custom node: nothing under ``comfy/`` is patched on disk.
 """
 
@@ -18,7 +25,12 @@ from typing_extensions import override
 from comfy_api.latest import ComfyExtension, io
 
 # ``runtime`` and ``backends`` install their defaults when they are imported.
-from . import aligned_reference, backends, flash_compression, light_vae, runtime  # noqa: F401
+from . import (aligned_reference, attention_fa3, backends, bench, fast_blocks, flash_compression,  # noqa: F401
+               int8_fast, light_vae, lynnreal_kernels, runtime)
+
+bench.install()
+attention_fa3.install_rope_patch()
+int8_fast.install()
 
 
 class LynnRealExtension(ComfyExtension):

@@ -21,8 +21,10 @@
 </p>
 
 > [!IMPORTANT]
-> 🔥 **ComfyUI is now supported!** Workflows for t2v, i2v, r2v, pose2v and v2v, the node pack
-> they need and every weight they load are in [`comfyui/`](comfyui/) — see [ComfyUI](#comfyui).
+> 🔥 **ComfyUI is now supported — Standard *and* Flash!** The Standard four-step workflows
+> (t2v, i2v, r2v, pose2v, v2v) and the **Flash three-step** workflows (t2v, ti2v, ref2v), the
+> node pack they need and every weight they load are in [`comfyui/`](comfyui/) — a 5-second
+> 1344×768 clip **with audio in ~8.4 s on a single H100**, see [ComfyUI](#comfyui).
 > **This repository is an early beta and still has known limitations and unfinished features. Bugs, compatibility issues and inconsistent generation quality may remain. Thank you for your patience and understanding as we continue improving it. We plan to release the training code, part of the training data, and a more efficient dit in the future.**
 
 ## Paper
@@ -90,7 +92,7 @@ will become downloadable as their uploads are completed.
 | Model | Sampling | Weights | Status |
 | :--- | :--- | :--- | :--- |
 | **Standard** · BF16 DiT | 4 steps | [Hugging Face ↗](https://huggingface.co/stdstu123/LynnReal-Onmi-beta-0.1) | Completed |
-| **Flash** · W8A8 DiT | 3 steps | [Hugging Face ↗](https://huggingface.co/stdstu123/LynnReal-Onmi-flash-beta-0.1) | Upload planned |
+| **Flash** · W8A8 DiT | 3 steps | [Hugging Face ↗](https://huggingface.co/stdstu123/LynnReal-Onmi-flash-beta-0.1) | Completed |
 | **Lightweight VAE** | Optional codec | [Hugging Face ↗](https://huggingface.co/stdstu123/LynnReal-Onmi-light-vae) | Completed |
 | **Standard DiT INT8** | 4 steps | To be announced | **Coming soon** |
 
@@ -173,14 +175,42 @@ to the native attention backend and official VAE.
 
 **We also ship a ComfyUI port — it is open, and you are very welcome to try it! 🎉**
 
-[`comfyui/`](comfyui/) contains workflows for **t2v, i2v, r2v, pose2v and v2v**, the small
-custom node pack they need (`ComfyUI-LynnReal`), the demo assets the workflows load, and the
-exact model files each task needs. Those files are published in ComfyUI format alongside the
+[`comfyui/`](comfyui/) contains workflows for **t2v, i2v, r2v, pose2v and v2v** on the Standard
+four-step checkpoints **and for t2v, ti2v and ref2v on the Flash three-step checkpoint**, the
+small custom node pack they need (`ComfyUI-LynnReal`), the demo assets the workflows load, and
+the exact model files each task needs. Those files are published in ComfyUI format alongside the
 release weights on Hugging Face under
 [🤗 stdstu123/LynnReal-Onmi-beta-0.1 · comfyui/models](https://huggingface.co/stdstu123/LynnReal-Onmi-beta-0.1/tree/main/comfyui/models).
 Drop the workflows, the node pack and the models into your ComfyUI install and they run — no
 launcher flags needed. Every task, its workflow and the weights it loads are listed in
 [`comfyui/README.md`](comfyui/README.md).
+
+### ⚡ Flash three-step is live — and it is fast
+
+The Flash checkpoints run in ComfyUI at their trained **three** steps: `t2v`, `ti2v` (one first
+frame) and `ref2v` (reference pictures), W8A8 DiT plus the Light VAE. On a **single H100 80 GB**
+at 1344×768, warm — model already loaded, the way a session runs — three measured runs per cell:
+
+| Task | 5 s · generate | 5 s · click-to-video | 10 s · generate | 10 s · click-to-video |
+| :--- | ---: | ---: | ---: | ---: |
+| Text → video | **8.4 s** | 12.2 s | **22.0 s** | 29.1 s |
+| First frame → video | **8.9 s** | 13.0 s | **23.1 s** | 30.1 s |
+| References → video | **9.5 s** | 13.2 s | **24.2 s** | 31.1 s |
+
+A five-second 1344×768 clip **with native stereo audio** — three denoiser steps and both
+decoders included — in about **eight and a half seconds**, on **one** GPU. *Generate* is the
+release's own Generate-wall convention (first denoiser forward to decoded frames);
+*click-to-video* is what you actually wait for, prompt encoding and muxing included, and repeat
+runs agree to ±0.02 s.
+
+> [!WARNING]
+> Videos longer than 11 seconds are not usable in the ComfyUI Flash path yet — the accelerated
+> path for long clips is still being fixed.
+
+Nothing is assumed about your card: the node pack picks the fastest attention it can find and
+verifies it numerically (FlashAttention-3 → FA2 → cuDNN SDPA → native), falls back to ComfyUI's
+own block math whenever a fused kernel is unavailable, and tunes the INT8 GEMMs for the GPU it
+actually runs on.
 
 > [!WARNING]
 > **The ComfyUI port is experimental and under active construction 🚧**
@@ -192,10 +222,10 @@ launcher flags needed. Every task, its workflow and the weights it loads are lis
 >   kernels, a different attention backend and no Hopper-specific INT8 grouping yet).
 > - Same-seed output is **not** comparable between the two engines: the noise source and the
 >   decoder path differ. Compare quality, not pixel identity.
-> - The port currently covers the Standard four-step checkpoints, with an optional INT8 switch
->   on the canvas (off by default, except `pose2v`) backed by
->   `lynnreal_omni_standard_int8.safetensors`. The Flash three-step variant is isolated for now
->   and will follow in a later release.
+> - The port covers the Standard four-step checkpoints (with an optional INT8 switch on the
+>   canvas, off by default except `pose2v`, backed by `lynnreal_omni_standard_int8.safetensors`)
+>   and the **Flash three-step checkpoint**. Videos longer than 11 seconds are not usable in the
+>   ComfyUI Flash path yet — the accelerated path for long clips is still being fixed.
 > - We will keep improving it — speed, memory, more tasks and cleaner packaging are all on the
 >   list. **Issues and pull requests are very welcome!** 🙌
 

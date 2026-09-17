@@ -29,6 +29,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import statistics
 import sys
 import time
@@ -38,10 +39,7 @@ import torch
 from safetensors import safe_open
 from safetensors.torch import save_file
 
-DEFAULT_DIR = Path(
-    "/inspire/qb-ilm/project/3d-display/public/maoxiaofeng/lynnreal_paper/"
-    "lynnreal_release/weight/comfyui/models/diffusion_models"
-)
+DEFAULT_DIR = Path(os.environ.get("LYNNREAL_DIFFUSION_MODELS", "models/diffusion_models"))
 DEFAULT_SRC = DEFAULT_DIR / "lynnreal_omni_standard_bf16.safetensors"
 DEFAULT_DST = DEFAULT_DIR / "lynnreal_omni_standard_int8.safetensors"
 

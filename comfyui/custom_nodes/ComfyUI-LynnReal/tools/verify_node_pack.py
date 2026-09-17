@@ -13,10 +13,12 @@ Three checks:
 Also reproduces the failure this loader exists to prevent: the stock construction path is
 36 blocks, so the Light VAE leaves ten blocks randomly initialized.
 
-Run it on any node that sees the shared filesystem, with the ComfyUI environment:
+Run it from a ComfyUI checkout, with the environment ComfyUI itself runs in:
 
-    /inspire/qb-ilm/project/3d-display/public/conda/envs/lynnreal-comfyui/bin/python \
-        tools/verify_node_pack.py
+    python custom_nodes/ComfyUI-LynnReal/tools/verify_node_pack.py \
+        --comfy /path/to/ComfyUI [--release /path/to/a/LynnReal/release]
+
+Both paths also come from the environment, `LYNNREAL_COMFY` and `LYNNREAL_RELEASE`.
 """
 
 from __future__ import annotations
@@ -28,8 +30,8 @@ import os
 import sys
 import time
 
-DEFAULT_COMFY = "/inspire/qb-ilm/project/3d-display/linpeijia-240108120084/ComfyUI"
-DEFAULT_RELEASE = "/inspire/qb-ilm/project/3d-display/public/maoxiaofeng/lynnreal_paper/lynnreal_release"
+DEFAULT_COMFY = os.environ.get("LYNNREAL_COMFY", ".")
+DEFAULT_RELEASE = os.environ.get("LYNNREAL_RELEASE", "")
 
 
 def log(message: str) -> None:
@@ -110,6 +112,9 @@ def main() -> int:
     parser.add_argument("--release", default=DEFAULT_RELEASE)
     parser.add_argument("--skip-official", action="store_true")
     args = parser.parse_args()
+    if not args.release:
+        parser.error("pass --release (or set LYNNREAL_RELEASE) to a checkout holding "
+                     "weight/comfyui/models/vae/ -- it is what the Light VAE check compares against")
 
     comfy_dir = os.path.abspath(args.comfy)
     pack_dir = os.path.join(comfy_dir, "custom_nodes", "ComfyUI-LynnReal")
