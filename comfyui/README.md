@@ -66,10 +66,10 @@ The embedding is optional: the demo prompts reference it as
 | `qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors` | 14.6 GiB | `models/text_encoders/` | [Comfy-Org/MiniMax-H3](https://huggingface.co/Comfy-Org/MiniMax-H3) |
 | `minimaxh3_art_is_explosion.safetensors` | 500 KiB | `models/embeddings/` | [Comfy-Org/MiniMax-H3](https://huggingface.co/Comfy-Org/MiniMax-H3) |
 
-## ⚡ Flash three-step is live
+## ⚡🔥 Flash three-step is live!
 
 The **Flash** checkpoints run in ComfyUI too: `t2v`, `ti2v` (one first frame) and `ref2v`
-(reference pictures), each at its trained **three** steps with the W8A8 DiT and the Light VAE.
+(reference pictures), each at its trained **three** steps with the W8A8 DiT and the Light VAE!
 
 On a **single H100 80 GB**, 1344×768, warm — model already loaded, the way a session runs — with
 three measured runs per cell:
@@ -84,7 +84,7 @@ A five-second 1344×768 clip **with native stereo audio** comes out in about **e
 seconds**, three denoiser steps and both decoders included, on one card. *Generate* is the
 release's own Generate-wall convention (first denoiser forward to decoded frames);
 *click-to-video* is what you actually wait for, prompt encoding and muxing included. Repeat runs
-agree to ±0.02 s.
+agree to ±0.02 s!
 
 > [!WARNING]
 > Videos longer than 11 seconds are not usable yet — the accelerated path for long clips is
@@ -96,8 +96,8 @@ FlashAttention-2 → cuDNN SDPA → native SDPA), falls back to ComfyUI's own bl
 fused kernel is unavailable, uses comfy-kitchen's CUDA backend when the torch build has it and
 its Triton backend otherwise, and pins the INT8 GEMM config only on the Hopper part it was
 measured on — everywhere else comfy-kitchen tunes for itself (`LYNNREAL_INT8_PIN=force`
-overrides). It is all node pack: nothing under `comfy/` is patched on disk, so nothing breaks
-when ComfyUI is updated.
+overrides)! It is all node pack: nothing under `comfy/` is patched on disk, so nothing breaks
+when ComfyUI is updated!
 
 ## The INT8 switch
 

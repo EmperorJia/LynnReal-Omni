@@ -25,6 +25,7 @@
 > (t2v, i2v, r2v, pose2v, v2v) and the **Flash three-step** workflows (t2v, ti2v, ref2v), the
 > node pack they need and every weight they load are in [`comfyui/`](comfyui/) — a 5-second
 > 1344×768 clip **with audio in ~8.4 s on a single H100**, see [ComfyUI](#comfyui).
+>
 > **This repository is an early beta and still has known limitations and unfinished features. Bugs, compatibility issues and inconsistent generation quality may remain. Thank you for your patience and understanding as we continue improving it. We plan to release the training code, part of the training data, and a more efficient dit in the future.**
 
 ## Paper
@@ -185,10 +186,10 @@ Drop the workflows, the node pack and the models into your ComfyUI install and t
 launcher flags needed. Every task, its workflow and the weights it loads are listed in
 [`comfyui/README.md`](comfyui/README.md).
 
-### ⚡ Flash three-step is live — and it is fast
+### ⚡🔥 Flash three-step is live — and it is fast!
 
 The Flash checkpoints run in ComfyUI at their trained **three** steps: `t2v`, `ti2v` (one first
-frame) and `ref2v` (reference pictures), W8A8 DiT plus the Light VAE. On a **single H100 80 GB**
+frame) and `ref2v` (reference pictures), W8A8 DiT plus the Light VAE! On a **single H100 80 GB**
 at 1344×768, warm — model already loaded, the way a session runs — three measured runs per cell:
 
 | Task | 5 s · generate | 5 s · click-to-video | 10 s · generate | 10 s · click-to-video |
@@ -201,7 +202,7 @@ A five-second 1344×768 clip **with native stereo audio** — three denoiser ste
 decoders included — in about **eight and a half seconds**, on **one** GPU. *Generate* is the
 release's own Generate-wall convention (first denoiser forward to decoded frames);
 *click-to-video* is what you actually wait for, prompt encoding and muxing included, and repeat
-runs agree to ±0.02 s.
+runs agree to ±0.02 s!
 
 > [!WARNING]
 > Videos longer than 11 seconds are not usable in the ComfyUI Flash path yet — the accelerated
@@ -210,7 +211,7 @@ runs agree to ±0.02 s.
 Nothing is assumed about your card: the node pack picks the fastest attention it can find and
 verifies it numerically (FlashAttention-3 → FA2 → cuDNN SDPA → native), falls back to ComfyUI's
 own block math whenever a fused kernel is unavailable, and tunes the INT8 GEMMs for the GPU it
-actually runs on.
+actually runs on!
 
 > [!WARNING]
 > **The ComfyUI port is experimental and under active construction 🚧**
