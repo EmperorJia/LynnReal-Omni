@@ -564,7 +564,6 @@ projects for their license terms and attribution notices.
 ### Citation
 If you use Yume for your research, please cite our paper:
 
-```bibtex
 @misc{mao2026lynnrealomninativemultimodalvideo,
       title={LynnReal-Omni: Native multi-modal Video Generation for Agentic Visual Workflows}, 
       author={Xiaofeng Mao and Peijia Lin and Shaohao Rui and Yibo Zhang and Haibin Wan and Weijie Ma},
@@ -575,6 +574,7 @@ If you use Yume for your research, please cite our paper:
       url={https://arxiv.org/abs/2609.15863}, 
 }
 
+---
 <p align="center">
   <strong>Thank you for trying LynnReal-Omni.</strong><br>
   Better models, training code and selected datasets are planned.<br>
