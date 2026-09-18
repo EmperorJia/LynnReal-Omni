@@ -3,6 +3,11 @@
 User-visible changes to the released bundle — checkpoints, the ComfyUI workflows, the
 `ComfyUI-LynnReal` node pack and the documentation. Newest first; dates are UTC+8.
 
+**Source of truth.** Edit this file first (and add the new line to the "Latest updates" list in
+the Hugging Face model card). The Hugging Face copies of `CHANGELOG.md` and `README.md` in
+[`stdstu123/LynnReal-Onmi-beta-0.1`](https://huggingface.co/stdstu123/LynnReal-Onmi-beta-0.1)
+mirror this one.
+
 **How to update.** Everything the ComfyUI port needs lives under
 [`comfyui/`](comfyui): copy `comfyui/custom_nodes/ComfyUI-LynnReal` into
 `ComfyUI/custom_nodes/`, the workflows into `ComfyUI/user/default/workflows/`, and the files
