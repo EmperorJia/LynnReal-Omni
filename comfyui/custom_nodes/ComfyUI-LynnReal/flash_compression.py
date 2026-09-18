@@ -29,7 +29,7 @@ from typing_extensions import override
 import comfy.model_prefetch
 from comfy_api.latest import ComfyExtension, io
 
-from . import attention_fa3, bench, fast_blocks
+from . import adaln_exact, attention_fa3, bench, fast_blocks
 
 # Packed rows the Flash export tags as video: keyframe rows, reference images and the video
 # streams themselves all take the video token tag upstream. Audio rows keep the audio tag and
@@ -395,6 +395,9 @@ class LynnRealFlashTokenCompression(io.ComfyNode):
         shared = {"cache": {}, "state": {}}
         bench.install()
         attention_fa3.probe_once()
+        # A selector-style adaLN table (the locked Flash build) needs the projection to run in the
+        # model dtype; detection is structural, so a plain curve checkpoint is left alone.
+        adaln_exact.install(patched)
         use_fa3 = attention_fa3.usable()
         # diagnostics only: LYNNREAL_NO_COMPRESSION=1 changes the arithmetic (the Flash DiT is
         # trained with compression) and exists to price the patch itself
