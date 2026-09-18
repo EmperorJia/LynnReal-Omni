@@ -551,6 +551,8 @@ Our planned releases and improvements include:
 - [ ] Selected datasets or dataset subsets, subject to their redistribution permissions.
 - [ ] Continued fixes to installation, hardware compatibility, inference, documentation,
   and reproducible examples.
+- [ ] ComfyUI: keep the Light VAE decoder compiled on DynamicVRAM machines — it currently falls
+  back to eager decoding there, which roughly doubles decode time.
 
 These are development plans, not a fixed release schedule. Availability and
 usage instructions will be updated here as each release is ready. Reproducible

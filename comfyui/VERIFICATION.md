@@ -98,6 +98,10 @@ $E tools/frame_diff.py a.mp4 b.mp4 --frame 3
 3. 原核心补丁（含 GPU 计时钩子）已从 `comfy/` 撤出，保存在 stash 与
    `custom_nodes_backup/lynnreal_core_patch_20260915.patch`；需要复现旧计时表时
    `git apply` 即可。
+4. **DynamicVRAM 上的 decoder 编译**：见 §8。已决定暂缓——收益 5s 片子约 1.7s/条（15s 约 5s/条），
+   而编译一次性 ≈26s（空缓存）/≈5s（命中缓存），且实现要求 aimdo 的惰性权重先落地，存在换页后
+   固化成旧权重的正确性风险。DynamicVRAM 栈上更大的差距在注意力后端（SDPA vs FA3 单这一项
+   3.6s），优先级排在前面。
 
 ## 7. Flash 在 DynamicVRAM 上的 `aimdo memory compile error`（2026-09-18 修复）
 
@@ -133,3 +137,58 @@ block 之前就退出（旧代码被判 FAIL，修复后通过），这样同类
 
 附注：同一份日志里 `FlashAttention 3 disabled (probe: ... 32 argument(s))` 是无害回退——FA3
 只在 Hopper（sm_90a）上有 kernel，RTX 5090 是 sm_120，本就走不了 FA3；FA2 里有 sm_120。
+
+## 8. 待办：DynamicVRAM 下的 decoder 编译（2026-09-18 记录 · 暂缓）
+
+**现象**：DynamicVRAM（comfy-aimdo）开启的机器上，Light VAE 的 decoder 编译总是失败并静默退回
+eager，日志只有一条 warning：
+
+```text
+light_vae.py: RuntimeWarning: Decoder compilation unavailable; using the eager decoder:
+Unsupported method call / Dynamo does not know how to trace method `__mul__` of class
+`PyCSimpleType`  (Developer debug context: ctypes.c_uint.__mul__ [ConstantVariable(int: 2)])
+```
+
+影响：解码 3.49s（eager）对 1.78s（编译）；5s 片子 end-to-end 13.6s 对 11.9s（DiT 不变）。
+
+**根因**：`comfy/utils.py:164` 在 `comfy.memory_management.aimdo_enabled` 为真时走 comfy-aimdo 的
+ctypes mmap 读取器（`load_safetensors`），返回惰性 tensor；第一次解码才真正读盘，这段读取落在
+`torch.compile(fullgraph=True)` 追踪的图里，Dynamo 不支持 ctypes 调用 → 编译失败 →
+`_recoverable_compile_failure()` 判定可恢复 → 换回 eager。cu126/cu128 栈 aimdo 是关的，tensor 在
+编译前已经落地，所以一直正常。
+
+**当前规则（修复前）**：aimdo 关 → 能编译；aimdo 开 → 必定退 eager。
+
+| 启动条件 | aimdo | decoder 编译 |
+|---|---|---|
+| torch < 2.8 或 CUDA < 13（cu126 / cu128 环境） | 不启用 | ✅（cu126 实测 `decoder compiled`，解码 1.78s） |
+| cu13x + `--disable-dynamic-vram`（或 `--highvram`/`--novram`/`--gpu-only`/`--cpu`） | 关 | ✅（dyn13 实测 `decoder compiled`，无 eager warning） |
+| cu13x 默认（含 5090 的 torch 2.13+cu312） | 开 | ❌ eager |
+| cu13x + `--disable-comfy-compiler` | 仍开 | ❌（该 flag 只关 DiT 的 malloc graph，不改变权重加载分支） |
+
+**实测（7228，H100，flash t2v 5s/1344×768，进程重启后第一次提交）**：
+
+| 状态 | 客户端总耗时 | generate | video_decode |
+|---|---:|---:|---:|
+| 冷进程 + 空 Inductor 缓存 | 91.0s | 38.3s | 28.1s（编译 ≈26s + 解码 1.8s） |
+| 冷进程 + 磁盘缓存命中 | 75.2s | 16.3s | 6.9s（编译 ≈5s + 解码 1.8s） |
+| 同进程第二次提交 | 15.0s | 8.0s | 1.78s |
+
+冷启动的大头是权重加载 ≈59s（75.2 − 16.3），与编译无关；（此前记录的 248.5s 是异常值：进程反复
+重启 + 共享盘首读冷 + 空缓存叠加。）
+
+**为什么暂缓（2026-09-18 决定）**：收益 5s 片子 1.7s/条、15s 约 5s/条；编译一次性 ≈26s（空缓存）
+/ ≈5s（缓存命中），回本点 15 条（空缓存）/ 3 条（命中）——只有会话里连点多条或跑长片才划算；而实现
+必须让 aimdo 管理的惰性权重先落地，一旦 aimdo 在会话中换页，编译图可能固化成旧权重（正确性风险，
+比慢更糟）。DynamicVRAM 栈上更大的差距在注意力后端（SDPA vs FA3，5s 单这一项 3.6s），
+所以先做便宜且低风险的两件事：注意力后端、eager 解码本身的调优。
+
+**若以后要做，方案**：
+
+1. 在 VAE 加载阶段（`LynnRealH3VAELoader` 内）先把 decoder 权重 materialize（或跑一次极小 latent 的
+   预热解码），再 `torch.compile`；保留现有可恢复失败回退。首条片子也能吃上编译速度，用户看到的是
+   "加载 VAE"。
+2. 或：首条 eager 正常出片，跑完后在后台编译，第二条起变快（首条永不加速）。
+
+验证要求：同一 latent 的 eager vs 编译逐帧对比（`tools/compare_videos.py`、`tools/frame_diff.py`），
+外加人为显存压力后重测；对照脚本 `tools/probe_decoder_compile.py`（工作区）。
