@@ -16,6 +16,7 @@
   <a href="#tasks">Tasks</a> &nbsp;·&nbsp;
   <a href="#usage-guides">Usage guides</a> &nbsp;·&nbsp;
   <a href="#roadmap">Roadmap</a> &nbsp;·&nbsp;
+  <a href="CHANGELOG.md">Changelog</a> &nbsp;·&nbsp;
   <a href="#organization">Organization</a> &nbsp;·&nbsp;
   <a href="#acknowledgments">Acknowledgments</a> &nbsp;·&nbsp;
   <a href="#acknowledgments">Citation</a>
