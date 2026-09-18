@@ -98,3 +98,38 @@ $E tools/frame_diff.py a.mp4 b.mp4 --frame 3
 3. 原核心补丁（含 GPU 计时钩子）已从 `comfy/` 撤出，保存在 stash 与
    `custom_nodes_backup/lynnreal_core_patch_20260915.patch`；需要复现旧计时表时
    `git apply` 即可。
+
+## 7. Flash 在 DynamicVRAM 上的 `aimdo memory compile error`（2026-09-18 修复）
+
+现象：在自动开启 DynamicVRAM 的机器上（torch ≥ 2.8 + cu13x，`main.py` 自己就会打开），
+Flash 工作流在第一个采样步崩：
+
+```
+[INFO] LynnReal: fused DiT blocks running (first block has 64 rows, 1 segments, table (1, 2688)).
+[INFO] LynnReal: fused DiT blocks verified on this GPU (relative error 0.0000, max abs 0.0000).
+[INFO] Comfy model compiler graph breaks: 0, rogues: 12
+[ERROR] !!! Exception during processing !!! aimdo memory compile error
+```
+
+原因：comfy-aimdo 会为每个 DiT block 记录 **malloc graph**，而融合 block 的两个 Triton
+kernel 的分配模式它不接受（`--disable-comfy-compiler` 或没有 aimdo 的栈都正常，把 block 包在
+`pause_malloc_graph()` 里也不行）。包里本来就有"malloc graph 活跃时自动关闭融合"的守卫，
+但 2026-09-17 把它从 `aimdo_enabled` 改成 `malloc_graph_enabled(device)` 时漏传了 device：
+`fast_blocks.probe(blocks[0])` 走默认参数，`is_device_cuda(None)` 恒为 False，守卫从未生效。
+（同一轮改动里的 RoPE 守卫用的是全局 `aimdo_enabled`，所以一直正常。）
+
+修复：`fast_blocks.probe()` 在查询前取 `comfy.model_management.get_torch_device()`；判定命中时
+按设计关闭融合 block 并打日志，Flash 图回落到 ComfyUI 的 block 数学。
+
+验证（7228，同一张 H100，同一工作流 `t2v_lynnreal_flash_3_step.json`，5s/1344×768）：
+
+| 栈 | 修复前 | 修复后 |
+|---|---|---|
+| cu13x + DynamicVRAM（自动开启 aimdo） | `rogues: 12` → `aimdo memory compile error` | 日志 `fused DiT blocks disabled (...)`，`Prompt executed in 118.03s`，正常出片 |
+| cu126（无 aimdo） | 正常（FA3 + 融合） | 不变：融合仍然启用，探测 `relative error 0.0000` |
+
+`tools/verify_node_pack.py` 增加了第 4 项检查：用哨兵 block 驱动 `probe()`，守卫必须在接触
+block 之前就退出（旧代码被判 FAIL，修复后通过），这样同类回归在无 GPU 的机器上也能拦住。
+
+附注：同一份日志里 `FlashAttention 3 disabled (probe: ... 32 argument(s))` 是无害回退——FA3
+只在 Hopper（sm_90a）上有 kernel，RTX 5090 是 sm_120，本就走不了 FA3；FA2 里有 sm_120。

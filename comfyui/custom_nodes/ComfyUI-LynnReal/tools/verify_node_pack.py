@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Verify the ComfyUI-LynnReal pack without a GPU.
 
-Three checks:
+Four checks:
 
 1. The pack loads exactly the way ComfyUI's ``load_custom_node`` loads a directory:
    ``spec_from_file_location(<path with dots replaced>, <dir>/__init__.py)``, then
@@ -9,6 +9,9 @@ Three checks:
 2. The Light VAE builds through ``comfy.sd.VAE`` at the depth the checkpoint has (26), with
    the release's 272/16 tile geometry, and every checkpoint key lands on the model.
 3. The official 36-block VAE still builds exactly as upstream does (256/64).
+4. The fused-block path stands itself down when comfy-aimdo's malloc graph is recording
+   (DynamicVRAM, i.e. every cu13x torch), which is what keeps the Flash graphs from dying with
+   "aimdo memory compile error".
 
 Also reproduces the failure this loader exists to prevent: the stock construction path is
 36 blocks, so the Light VAE leaves ten blocks randomly initialized.
@@ -106,6 +109,84 @@ def widget_layout(info: dict) -> list[tuple[str, bool]]:
     return layout
 
 
+def check_fused_block_malloc_guard(pack) -> int:
+    """The fused-block guard must see a real device, or the Flash graphs crash on DynamicVRAM.
+
+    ``fast_blocks.probe()`` disables the fused path when ComfyUI's comfy-aimdo malloc graph is
+    recording, because the planner rejects the allocation pattern of our two Triton kernels
+    (``RuntimeError: aimdo memory compile error`` on the first sampling step; pausing the graph
+    around the block does not help).  The guard asks ``comfy.model_prefetch.malloc_graph_enabled``,
+    which is ``is_device_cuda(device) and ...`` -- so it does nothing when it is handed ``None``.
+    That is exactly what happened between the rewrite that introduced the graph check and the fix
+    for it, and it is invisible on this machine whenever DynamicVRAM is off, so it gets a check.
+
+    The probe is driven with a sentinel "block" that must never be touched: if the guard fires,
+    ``probe`` returns before looking at it.
+    """
+    import contextlib
+    import types
+
+    import torch
+    import comfy.model_prefetch as prefetch
+
+    fast_blocks = pack.fast_blocks
+    seen: list = []
+
+    def malloc_graph_enabled(device):
+        # what comfy/model_prefetch.py does, reduced to the part that matters here
+        seen.append(device)
+        return getattr(device, "type", None) == "cuda"
+
+    # Patch the real module: ``probe`` does ``import comfy.model_prefetch as _prefetch``, which
+    # resolves through the already-imported ``comfy`` package, not through sys.modules alone.
+    saved_malloc_graph_enabled = prefetch.malloc_graph_enabled
+    saved_pause = prefetch.pause_malloc_graph
+    prefetch.malloc_graph_enabled = malloc_graph_enabled
+    prefetch.pause_malloc_graph = lambda *args, **kwargs: contextlib.nullcontext()
+
+    management = types.ModuleType("comfy.model_management")
+    management.get_torch_device = lambda: torch.device("cuda", 0)
+    management.cast_to = lambda value, **kwargs: value
+
+    saved = {
+        "comfy": fast_blocks.comfy,
+        "probed": fast_blocks._PROBED,
+        "failure": fast_blocks._FAILURE,
+        "usable": fast_blocks.usable,
+    }
+    fast_blocks.comfy = types.SimpleNamespace(model_management=management)
+    fast_blocks._PROBED = False
+    fast_blocks._FAILURE = None
+    fast_blocks.usable = lambda: True  # the kernels themselves are not what this check is about
+    try:
+        try:
+            fast_blocks.probe(object())
+        except Exception as error:  # the sentinel was touched -> the guard did not fire
+            log("guard check: probe raised {}: {}".format(type(error).__name__, error))
+        failure = fast_blocks._FAILURE
+    finally:
+        fast_blocks._FAILURE = saved["failure"]
+        fast_blocks._PROBED = saved["probed"]
+        fast_blocks.usable = saved["usable"]
+        fast_blocks.comfy = saved["comfy"]
+        prefetch.malloc_graph_enabled = saved_malloc_graph_enabled
+        prefetch.pause_malloc_graph = saved_pause
+
+    log("guard check: malloc_graph_enabled() saw {}".format(
+        [str(device) for device in seen] or "no call at all"))
+    if not any(getattr(device, "type", None) == "cuda" for device in seen):
+        log("FAIL: the malloc-graph guard asked about device=None, so it can never disable the "
+            "fused path; on a cu13x torch that is 'aimdo memory compile error' on the first "
+            "sampling step")
+        return 1
+    if not failure or "malloc graph" not in failure:
+        log("FAIL: probe kept the fused path enabled under an active malloc graph (failure={!r})"
+            .format(failure))
+        return 1
+    log("guard check: fused path disabled as intended -> {}".format(failure))
+    return 0
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--comfy", default=DEFAULT_COMFY)
@@ -169,6 +250,10 @@ def main() -> int:
         log("FAIL: a widget takes a control_after_generate slot the workflow does not encode")
         return 1
 
+    # ---- 1b. the fused-block guard sees a device when DynamicVRAM is on -----------------
+    if check_fused_block_malloc_guard(pack):
+        return 1
+
     light_vae_module = pack.light_vae
 
     # ---- 2. Light VAE: depth from the checkpoint, release tile geometry ----------------
@@ -214,7 +299,8 @@ def main() -> int:
             return 1
         check_keys("official", official_stage, official_sd)
 
-    log("DONE: node pack loads, Light VAE builds at 26 blocks with 272/16, official VAE unchanged")
+    log("DONE: node pack loads, Light VAE builds at 26 blocks with 272/16, official VAE "
+        "unchanged, fused path stands down under comfy-aimdo's malloc graph")
     return 0
 
 

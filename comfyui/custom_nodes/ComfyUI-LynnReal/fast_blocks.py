@@ -282,6 +282,12 @@ def probe(block, device=None) -> None:
     if _PROBED or not usable():
         return
     _PROBED = True
+    # The guard below needs a real device: `malloc_graph_enabled` asks
+    # `is_device_cuda(device)`, which is False for None, so passing the caller's default would
+    # silently skip the disable and leave the fused kernels inside the malloc graph. The block's
+    # own parameters may still be staged on the host; the kernels need the compute device, and
+    # every weight read goes through comfy's casting ops anyway.
+    device = device or comfy.model_management.get_torch_device()
     # comfy-aimdo's malloc *graph* plans the model's allocations ahead of time and its planner
     # rejects the pattern our two kernels produce ("aimdo memory compile error"; pausing the
     # graph around the block does not help). DynamicVRAM itself is fine -- only the graph is not
@@ -302,9 +308,6 @@ def probe(block, device=None) -> None:
                      "(LYNNREAL_FAST_PROBE=0); validate against a reference video instead.")
         return
     try:
-        # the block's own parameters may still be staged on the host; the kernels need the
-        # compute device, and every weight read goes through comfy's casting ops anyway
-        device = device or comfy.model_management.get_torch_device()
         dtype = next(block.parameters()).dtype
         hidden = block.norm1.weight.shape[0]
         sequence = 64
