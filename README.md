@@ -16,6 +16,7 @@
   <a href="#tasks">Tasks</a> &nbsp;·&nbsp;
   <a href="#usage-guides">Usage guides</a> &nbsp;·&nbsp;
   <a href="#roadmap">Roadmap</a> &nbsp;·&nbsp;
+  <a href="#organization">Organization</a> &nbsp;·&nbsp;
   <a href="#acknowledgments">Acknowledgments</a> &nbsp;·&nbsp;
   <a href="#acknowledgments">Citation</a>
 </p>
@@ -553,6 +554,20 @@ Our planned releases and improvements include:
 These are development plans, not a fixed release schedule. Availability and
 usage instructions will be updated here as each release is ready. Reproducible
 bug reports and feedback on failure cases are welcome.
+
+## Organization
+
+This project is developed by **[Lynnreal Lab](https://github.com/LynnReal-AI)**.
+
+**Leader:** Xiaofeng Mao, Shaohao Rui, Weijie Ma
+
+**Core Contributors:** Xiaofeng Mao, Peijia Lin, Shaohao Rui, Yibo Zhang, Haibin Wan, Weijie Ma
+
+### Join us
+
+Welcome students with backgrounds in 3D reconstruction and interactive world
+models to apply for internships and collaborate! Please send your resume to
+[hr@lynnreal.com](mailto:hr@lynnreal.com).
 
 ## Acknowledgments
 
