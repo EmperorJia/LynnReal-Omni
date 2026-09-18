@@ -14,6 +14,25 @@ mirror this one.
 under `comfyui/models/` into the matching `ComfyUI/models/` folders. The same tree ships in the
 [Hugging Face bundle](https://huggingface.co/stdstu123/LynnReal-Onmi-beta-0.1/tree/main/comfyui).
 
+## 2026-09-19 — Flash Lite: the same three-step model in 16.7 GiB instead of 37.0 GiB
+
+**What.** [`lynnreal_omni_flash_int8_lite.safetensors`](https://huggingface.co/stdstu123/LynnReal-Onmi-beta-0.1/tree/main/comfyui/models/diffusion_models)
+is an extra, optional Flash checkpoint. Its adaLN step-embedding table is stored as the modulation
+vectors the three-step schedule actually visits — taken verbatim from the original checkpoint — so
+it needs **16.7 GiB on disk instead of 37.0 GiB** and **17.0 GB of VRAM instead of 37.9 GB**, at
+the same speed.
+
+**Same frames.** At the same seed the sampler trajectory is identical to the original checkpoint:
+compared step by step on an H100, t2v / ti2v / ref2v at 5 s and 10 s, max |Δ| = 0.
+
+**How to use it.** Drop the file in `models/diffusion_models/`, keep the node pack up to date and
+open one of the three new `*_lite.json` workflows — no launcher flags, no configuration. The
+original Flash checkpoint and its workflows are unchanged and stay available.
+
+**Caveat.** The exact table is pinned to the shipped schedule (`euler` + `simple`, three steps,
+stock shifts); another step count or sampler falls back to the table's curve columns instead of
+failing.
+
 ## 2026-09-18 — ComfyUI: Flash workflows no longer crash on DynamicVRAM machines
 
 **Symptom.** On a machine where comfy-aimdo's DynamicVRAM is on (ComfyUI enables it by itself on
