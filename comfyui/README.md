@@ -23,7 +23,8 @@ comfyui/
 │   ├── v2v_lynnreal_4step.json          video continuation
 │   ├── t2v_lynnreal_flash_3_step.json   Flash: text → video + audio
 │   ├── ti2v_lynnreal_flash_3_step.json  Flash: first frame → video + audio
-│   └── ref2v_lynnreal_flash_3_step.json Flash: reference pictures → video + audio
+│   ├── ref2v_lynnreal_flash_3_step.json Flash: reference pictures → video + audio
+│   └── *_lite.json                      the same three on the Lite checkpoint
 ├── custom_nodes/ComfyUI-LynnReal/   -> ComfyUI/custom_nodes/
 ├── models/                          -> ComfyUI/models/            (see the tables below)
 ├── input/                           -> ComfyUI/input/             (demo assets the workflows load)
@@ -60,6 +61,7 @@ The embedding is optional: the demo prompts reference it as
 | `lynnreal_omni_standard_bf16.safetensors` | 61.7 GiB | `models/diffusion_models/` | this release |
 | `lynnreal_omni_standard_int8.safetensors` | 41.4 GiB | `models/diffusion_models/` | this release (optional) |
 | `lynnreal_omni_flash_int8.safetensors` | 37.0 GiB | `models/diffusion_models/` | this release (Flash workflows) |
+| `lynnreal_omni_flash_int8_lite.safetensors` | **16.7 GiB** | `models/diffusion_models/` | this release (Flash workflows, optional) |
 | `lynnreal_omni_light_vae_fp16.safetensors` | 3.6 GiB | `models/vae/` | this release (Flash workflows) |
 | `minimax_h3_video_vae_fp16.safetensors` | 4.9 GiB | `models/vae/` | [Comfy-Org/MiniMax-H3](https://huggingface.co/Comfy-Org/MiniMax-H3) |
 | `minimax_h3_audio_vae_fp32.safetensors` | 577 MiB | `models/vae/` | [Comfy-Org/MiniMax-H3](https://huggingface.co/Comfy-Org/MiniMax-H3) |
@@ -98,6 +100,21 @@ its Triton backend otherwise, and pins the INT8 GEMM config only on the Hopper p
 measured on — everywhere else comfy-kitchen tunes for itself (`LYNNREAL_INT8_PIN=force`
 overrides)! It is all node pack: nothing under `comfy/` is patched on disk, so nothing breaks
 when ComfyUI is updated!
+
+### ⚡ Lite checkpoint — 16.7 GiB instead of 37.0 GiB
+
+`lynnreal_omni_flash_int8_lite.safetensors` is the same three-step model with the adaLN step table
+stored as the exact modulation vectors that its schedule visits — the original checkpoint's values,
+verbatim — plus a curve fallback for anything else. Drop it in `models/diffusion_models/` and open
+one of the `*_lite.json` workflows: no flags, no configuration, the node pack recognises the table
+at load and prints one line.
+
+**It produces the same frames as the original Flash.** Compared step by step at the same seed on an
+H100 — t2v / ti2v / ref2v at 5 s and 10 s — the sampler state is identical (max |Δ| = 0), and the
+speed is unchanged (warm 5 s t2v: DiT 6.14 s vs 6.15 s).
+
+The exact table is pinned to the shipped schedule (`euler` + `simple`, three steps, stock shifts);
+change the step count or the sampler and it falls back to the curve columns instead of failing.
 
 ## The INT8 switch
 

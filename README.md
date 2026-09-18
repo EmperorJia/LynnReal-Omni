@@ -28,6 +28,11 @@
 > node pack they need and every weight they load are in [`comfyui/`](comfyui/) — a 5-second
 > 1344×768 clip **with audio in ~8.4 s on a single H100**, see [ComfyUI](#comfyui).
 >
+> ⚡ **Flash Lite is live!** The Flash three-step checkpoint now also ships as
+> `lynnreal_omni_flash_int8_lite.safetensors` — **16.7 GiB instead of 37.0 GiB (−55% on disk,
+> −20.4 GiB of VRAM)**, at the same speed, and at the same seed the same frames as the original
+> Flash. The original checkpoint is unchanged and stays available.
+>
 > **This repository is an early beta and still has known limitations and unfinished features. Bugs, compatibility issues and inconsistent generation quality may remain. Thank you for your patience and understanding as we continue improving it. We plan to release the training code, part of the training data, and a more efficient dit in the future.**
 
 ## Paper
