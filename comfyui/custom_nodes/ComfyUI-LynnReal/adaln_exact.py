@@ -22,32 +22,41 @@ import logging
 
 import torch
 
-STATE = {"installed": False, "fallback_logged": False}
+STATE = {"installed": False, "fallback_logged": False, "global_hook": False}
 
 
-def selector_pairs(table):
-    """{primary column: alternate column} for columns that carry a one-timestep variant.
+def selector_variants(table):
+    """{(primary column, batch rows): alternate column} for GEMM-shape variants.
 
-    Conversion convention (see tools/build_adaln_hybrid.py): a column whose one-hot marker sits
-    alone on row r is the alternate for the column whose marker sits alone on row r-1.  The full
-    form's own time embedder gives a slightly different value for the same timestep when a forward
-    carries a single timestep instead of several, which is why the t2v first step needs its own
-    column; at runtime the batch shape says which one applies.
+    Conversion convention (see tools/build_adaln_hybrid.py): a primary selector occupies rows
+    ``r,r+1``.  A batch-M variant has a lone marker at ``r+M``.  The t=0/M=1 special case uses a
+    lone primary at row 0 and its alternate at row 1.  The full form's BF16 GEMM can round
+    differently for M=1, M=2, and M=3, so Standard t2v needs shape-specific columns at every step.
     """
     values = table.detach().float()
-    lone = {}
+    rows_by_column = {}
     for column in range(values.shape[1]):
         rows = (values[:, column] == 1.0).nonzero().flatten().tolist()
+        if rows:
+            rows_by_column[column] = rows
+    primaries = {}
+    for column, rows in rows_by_column.items():
+        if len(rows) == 2 and rows[1] == rows[0] + 1:
+            primaries[column] = rows[0]
+        elif rows == [0]:
+            primaries[column] = 0
+    lone_at = {}
+    for column, rows in rows_by_column.items():
         if len(rows) == 1:
-            lone.setdefault(rows[0], []).append(column)
-    pairs = {}
-    for row, columns in lone.items():
-        if len(columns) != 1:
-            continue
-        previous = lone.get(row - 1) or []
-        if row > 0 and len(previous) == 1:
-            pairs[previous[0]] = columns[0]
-    return pairs
+            lone_at.setdefault(rows[0], []).append(column)
+    variants = {}
+    for primary, base in primaries.items():
+        for batch_rows in range(1, 9):
+            alternates = [column for column in lone_at.get(base + batch_rows, [])
+                          if column != primary]
+            if len(alternates) == 1:
+                variants[(primary, batch_rows)] = alternates[0]
+    return variants
 
 
 def looks_like_selector_table(table) -> bool:
@@ -69,17 +78,23 @@ def _model_dtype(diffusion):
 
 def install(model_patcher) -> bool:
     """Patch this model's adaLN projections if its table is a selector table."""
-    diffusion = getattr(getattr(model_patcher, "model", model_patcher), "diffusion_model", None)
+    root = getattr(model_patcher, "model", model_patcher)
+    diffusion = getattr(root, "diffusion_model", None)
+    if diffusion is None and type(root).__name__ == "MiniMaxH3Model":
+        diffusion = root
     if diffusion is None:
         return False
+    if getattr(diffusion, "_lynnreal_exact_installed", False):
+        return True
     table = getattr(diffusion, "adaln_t_table", None)
     if not looks_like_selector_table(table):
         return False
     dtype = _model_dtype(diffusion)
-    pairs = selector_pairs(table)
-    if pairs:
-        logging.info("LynnReal: adaLN table carries %d one-timestep alternate column(s) %s",
-                     len(pairs), {int(k): int(v) for k, v in pairs.items()})
+    variants = selector_variants(table)
+    if variants:
+        logging.info("LynnReal: adaLN table carries %d batch-shape variant column(s) %s",
+                     len(variants), {"%d@M%d" % (int(k[0]), int(k[1])): int(v)
+                                     for k, v in variants.items()})
 
     patched = 0
     for module in diffusion.modules():
@@ -94,13 +109,13 @@ def install(model_patcher) -> bool:
                 linear.bias.data = linear.bias.data.to(dtype)
         original = module.forward
 
-        def forward(t_emb, _original=original, _dtype=dtype, _module=module, _pairs=pairs):
+        def forward(t_emb, _original=original, _dtype=dtype, _module=module,
+                    _variants=variants):
             coords = t_emb
-            if _pairs and coords.shape[0] == 1:
-                # a one-timestep forward takes the alternate column for the timesteps that have one
+            if _variants:
                 chosen = coords.argmax(dim=-1)
                 for row in range(coords.shape[0]):
-                    alternate = _pairs.get(int(chosen[row]))
+                    alternate = _variants.get((int(chosen[row]), coords.shape[0]))
                     if alternate is None:
                         continue
                     coords = coords.clone()
@@ -120,8 +135,25 @@ def install(model_patcher) -> bool:
         patched += 1
 
     if patched:
+        diffusion._lynnreal_exact_installed = True
         STATE["installed"] = True
         logging.info("LynnReal: adaLN selector table detected -- %d projections run in %s so the "
                      "Lite table's timesteps match the full-form checkpoint bit for bit.",
                      patched, dtype)
     return bool(patched)
+
+
+def install_global() -> None:
+    """Install selector handling for Standard workflows that have no Flash compression node."""
+    if STATE["global_hook"]:
+        return
+    from comfy.ldm.minimax.model import MiniMaxH3Model
+
+    original = MiniMaxH3Model.forward
+
+    def forward(self, *args, **kwargs):
+        install(self)
+        return original(self, *args, **kwargs)
+
+    MiniMaxH3Model.forward = forward
+    STATE["global_hook"] = True

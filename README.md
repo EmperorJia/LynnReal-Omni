@@ -33,6 +33,11 @@
 > −20.4 GiB of VRAM)**, at the same speed, and at the same seed the same frames as the original
 > Flash. The original checkpoint is unchanged and stays available.
 >
+> ⚡ **Standard Lite is live too.** The four-step BF16 checkpoint is **37.6 GiB instead of
+> 61.7 GiB**, and the matching INT8 checkpoint is **20.4 GiB instead of 44.5 GiB**. The five
+> `*_4step_lite.json` workflows preserve the BF16/INT8 switch; at fixed seed all four sampler
+> evaluations are bit-identical to their original checkpoint (`max |Δ| = 0`).
+>
 > **This repository is an early beta and still has known limitations and unfinished features. Bugs, compatibility issues and inconsistent generation quality may remain. Thank you for your patience and understanding as we continue improving it. We plan to release the training code, part of the training data, and a more efficient dit in the future.**
 
 ## Paper

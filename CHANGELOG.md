@@ -14,6 +14,27 @@ mirror this one.
 under `comfyui/models/` into the matching `ComfyUI/models/` folders. The same tree ships in the
 [Hugging Face bundle](https://huggingface.co/stdstu123/LynnReal-Onmi-beta-0.1/tree/main/comfyui).
 
+## 2026-09-19 — Standard Lite: exact four-step BF16 and INT8 checkpoints
+
+**What.** Added two optional Standard checkpoints:
+`lynnreal_omni_standard_bf16_lite.safetensors` is **37.6 GiB instead of 61.7 GiB**, and
+`lynnreal_omni_standard_int8_lite.safetensors` is **20.4 GiB instead of 44.5 GiB**. Their loaded
+DiT footprints are 38.6 GB and 20.8 GB respectively, down from 63.2 GB and 45.5 GB.
+
+**Same sampler trajectory.** At seed `970000`, every sampler state and denoiser output from all
+four steps matched the corresponding original checkpoint exactly for t2v, i2v, r2v, pose2v and
+v2v (`max |Δ| = 0`). The checks used cold model loads, required four non-empty comparison dumps,
+and verified the default INT8 branch used by `pose2v`.
+
+**How.** The checkpoints store the original model's adaLN modulation vectors for every timestep
+and call shape visited by the shipped schedules, with a curve fallback for other timesteps. The
+node pack now installs this selector for Standard models as well as Flash models.
+
+**How to use it.** Install the current `ComfyUI-LynnReal` node pack, put the Lite checkpoints in
+`models/diffusion_models/`, and open one of the five new `*_4step_lite.json` workflows. Their
+BF16/INT8 switch selects the matching Lite pair. The original checkpoints and workflows are
+unchanged and remain available.
+
 ## 2026-09-19 — Flash Lite: the same three-step model in 16.7 GiB instead of 37.0 GiB
 
 **What.** [`lynnreal_omni_flash_int8_lite.safetensors`](https://huggingface.co/stdstu123/LynnReal-Onmi-beta-0.1/tree/main/comfyui/models/diffusion_models)

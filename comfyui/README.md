@@ -24,7 +24,7 @@ comfyui/
 │   ├── t2v_lynnreal_flash_3_step.json   Flash: text → video + audio
 │   ├── ti2v_lynnreal_flash_3_step.json  Flash: first frame → video + audio
 │   ├── ref2v_lynnreal_flash_3_step.json Flash: reference pictures → video + audio
-│   └── *_lite.json                      the same three on the Lite checkpoint
+│   └── *_lite.json                      matching Standard / Flash Lite checkpoints
 ├── custom_nodes/ComfyUI-LynnReal/   -> ComfyUI/custom_nodes/
 ├── models/                          -> ComfyUI/models/            (see the tables below)
 ├── input/                           -> ComfyUI/input/             (demo assets the workflows load)
@@ -54,12 +54,19 @@ whether the node pack is required.
 The embedding is optional: the demo prompts reference it as
 `embedding:minimaxh3_art_is_explosion`. Drop it and remove that token to run without it.
 
+The five matching Standard Lite workflows are named `*_4step_lite.json`. They keep the same
+inputs and the same `Use INT8 model?` switch, but select the BF16 Lite and INT8 Lite checkpoints.
+They require the current `ComfyUI-LynnReal` node pack; the five original Standard workflows and
+checkpoints remain unchanged.
+
 ### Files and sizes
 
 | File | Size | Destination | Source |
 |---|---|---|---|
 | `lynnreal_omni_standard_bf16.safetensors` | 61.7 GiB | `models/diffusion_models/` | this release |
-| `lynnreal_omni_standard_int8.safetensors` | 41.4 GiB | `models/diffusion_models/` | this release (optional) |
+| `lynnreal_omni_standard_bf16_lite.safetensors` | **37.6 GiB** | `models/diffusion_models/` | this release (optional Standard Lite) |
+| `lynnreal_omni_standard_int8.safetensors` | 44.5 GiB | `models/diffusion_models/` | this release (optional) |
+| `lynnreal_omni_standard_int8_lite.safetensors` | **20.4 GiB** | `models/diffusion_models/` | this release (optional Standard Lite) |
 | `lynnreal_omni_flash_int8.safetensors` | 37.0 GiB | `models/diffusion_models/` | this release (Flash workflows) |
 | `lynnreal_omni_flash_int8_lite.safetensors` | **16.7 GiB** | `models/diffusion_models/` | this release (Flash workflows, optional) |
 | `lynnreal_omni_light_vae_fp16.safetensors` | 3.6 GiB | `models/vae/` | this release (Flash workflows) |
@@ -67,6 +74,27 @@ The embedding is optional: the demo prompts reference it as
 | `minimax_h3_audio_vae_fp32.safetensors` | 577 MiB | `models/vae/` | [Comfy-Org/MiniMax-H3](https://huggingface.co/Comfy-Org/MiniMax-H3) |
 | `qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors` | 14.6 GiB | `models/text_encoders/` | [Comfy-Org/MiniMax-H3](https://huggingface.co/Comfy-Org/MiniMax-H3) |
 | `minimaxh3_art_is_explosion.safetensors` | 500 KiB | `models/embeddings/` | [Comfy-Org/MiniMax-H3](https://huggingface.co/Comfy-Org/MiniMax-H3) |
+
+## ⚡ Standard Lite — 37.6 GiB BF16 / 20.4 GiB INT8
+
+The Standard four-step model now has two optional Lite checkpoints:
+
+- `lynnreal_omni_standard_bf16_lite.safetensors`: **37.6 GiB** instead of 61.7 GiB.
+- `lynnreal_omni_standard_int8_lite.safetensors`: **20.4 GiB** instead of 44.5 GiB.
+
+They replace the adaLN time-embedding MLP with an exact table for the timesteps visited by the
+shipped Standard schedules. The table contains the original checkpoints' modulation vectors
+verbatim, including the alternate one-row t2v call shape. Other timesteps use a compact curve
+fallback.
+
+**The shipped four-step results are bit-identical to the original checkpoints.** On one H100,
+with the same seed (`970000`), all four sampler states and denoiser outputs matched exactly for
+t2v, i2v, r2v, pose2v and v2v: `max |Δ| = 0`. This comparison used cold model loads and also
+verified that `pose2v` selected the intended INT8 pair.
+
+Open the matching `*_4step_lite.json` workflow after installing both the checkpoint you want and
+the current node pack. The BF16/INT8 switch works exactly as in the original workflow. Changing
+the schedule can use the curve fallback and is not covered by the bit-exact guarantee.
 
 ## ⚡🔥 Flash three-step is live!
 
@@ -118,11 +146,12 @@ change the step count or the sampler and it falls back to the curve columns inst
 
 ## The INT8 switch
 
-All five workflows carry a **`Use INT8 model?`** boolean (default **off** except `pose2v`). It
-swaps `UNETLoader` to `lynnreal_omni_standard_int8.safetensors` — the same W8A8 contract as the
-release's `--precision int8` path (per-output-channel weight scales, per-token activation
-scales, INT32 accumulate; block 0, the last block, the token refiner, adaLN and the IO
-projections stay BF16).
+All five Standard workflows carry a **`Use INT8 model?`** boolean (default **off** except
+`pose2v`). In the original workflows it swaps `UNETLoader` to
+`lynnreal_omni_standard_int8.safetensors`; in the matching Lite workflows it swaps to
+`lynnreal_omni_standard_int8_lite.safetensors`. Both use the same W8A8 contract as the release's
+`--precision int8` path (per-output-channel weight scales, per-token activation scales, INT32
+accumulate; block 0, the last block, the token refiner, adaLN and the IO projections stay BF16).
 
 The three Flash workflows do not need it: their checkpoint is already the trained W8A8 export.
 
@@ -136,8 +165,10 @@ The three Flash workflows do not need it: their checkpoint is already the traine
 4. Start ComfyUI and open a workflow. An 80 GB-class GPU is required at 1344×768;
    `PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True` is recommended.
 
-   **VRAM:** the node pack keeps ComfyUI's own reserve, which keeps the 61.7 GiB DiT and the
-   15 GiB text encoder resident — a warm 4-step 1344×768 five-second t2v runs in ~50 s.
+   **VRAM:** the node pack keeps ComfyUI's own reserve. With the original checkpoint this keeps
+   the 61.7 GiB DiT and the 15 GiB text encoder resident — a warm 4-step 1344×768 five-second
+   t2v runs in ~50 s. Standard Lite reduces the loaded DiT footprint from 63.2 GB to 38.6 GB
+   (BF16), or from 45.5 GB to 20.8 GB (INT8).
    Reserving VRAM instead makes ComfyUI evict the text encoder between runs (measured 46 s → 85 s).
    `pose2v` defaults to INT8, so it fits without any flag; if you flip it back to bf16, run it
    with `--reserve-vram 10` (or `LYNNREAL_RESERVE_VRAM=10`).

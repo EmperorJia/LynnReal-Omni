@@ -25,12 +25,13 @@ from typing_extensions import override
 from comfy_api.latest import ComfyExtension, io
 
 # ``runtime`` and ``backends`` install their defaults when they are imported.
-from . import (aligned_reference, attention_fa3, backends, bench, fast_blocks, flash_compression,  # noqa: F401
-               int8_fast, light_vae, lynnreal_kernels, runtime)
+from . import (adaln_exact, aligned_reference, attention_fa3, backends, bench, fast_blocks,  # noqa: F401
+               flash_compression, int8_fast, light_vae, lynnreal_kernels, runtime)
 
 bench.install()
 attention_fa3.install_rope_patch()
 int8_fast.install()
+adaln_exact.install_global()
 
 
 class LynnRealExtension(ComfyExtension):
