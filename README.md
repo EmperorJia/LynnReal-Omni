@@ -37,6 +37,8 @@
 > 61.7 GiB**, and the matching INT8 checkpoint is **20.4 GiB instead of 44.5 GiB**. The five
 > `*_4step_lite.json` workflows preserve the BF16/INT8 switch; at fixed seed all four sampler
 > evaluations are bit-identical to their original checkpoint (`max |Δ| = 0`).
+> **When using a Lite checkpoint, keep the shipped step count: Standard Lite uses 4 steps and
+> Flash Lite uses 3 steps. Other step counts are not validated and may produce different results.**
 >
 > **This repository is an early beta and still has known limitations and unfinished features. Bugs, compatibility issues and inconsistent generation quality may remain. Thank you for your patience and understanding as we continue improving it. We plan to release the training code, part of the training data, and a more efficient dit in the future.**
 

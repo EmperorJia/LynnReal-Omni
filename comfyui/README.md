@@ -93,8 +93,11 @@ t2v, i2v, r2v, pose2v and v2v: `max |Δ| = 0`. This comparison used cold model l
 verified that `pose2v` selected the intended INT8 pair.
 
 Open the matching `*_4step_lite.json` workflow after installing both the checkpoint you want and
-the current node pack. The BF16/INT8 switch works exactly as in the original workflow. Changing
-the schedule can use the curve fallback and is not covered by the bit-exact guarantee.
+the current node pack. The BF16/INT8 switch works exactly as in the original workflow.
+
+> [!IMPORTANT]
+> **Keep Standard Lite at the shipped 4 steps.** Other step counts can fall back to the curve
+> columns, but they are not validated and are not covered by the bit-exact guarantee.
 
 ## ⚡🔥 Flash three-step is live!
 
@@ -143,6 +146,8 @@ speed is unchanged (warm 5 s t2v: DiT 6.14 s vs 6.15 s).
 
 The exact table is pinned to the shipped schedule (`euler` + `simple`, three steps, stock shifts);
 change the step count or the sampler and it falls back to the curve columns instead of failing.
+**Keep Flash Lite at the shipped 3 steps; other step counts are not validated and may produce
+different results.**
 
 ## The INT8 switch
 

@@ -35,6 +35,9 @@ node pack now installs this selector for Standard models as well as Flash models
 BF16/INT8 switch selects the matching Lite pair. The original checkpoints and workflows are
 unchanged and remain available.
 
+**Recommendation.** Keep Standard Lite at the shipped **4 steps**. Other step counts use the
+fallback path, are not validated and are not covered by the bit-exact guarantee.
+
 ## 2026-09-19 — Flash Lite: the same three-step model in 16.7 GiB instead of 37.0 GiB
 
 **What.** [`lynnreal_omni_flash_int8_lite.safetensors`](https://huggingface.co/stdstu123/LynnReal-Onmi-beta-0.1/tree/main/comfyui/models/diffusion_models)
@@ -52,7 +55,8 @@ original Flash checkpoint and its workflows are unchanged and stay available.
 
 **Caveat.** The exact table is pinned to the shipped schedule (`euler` + `simple`, three steps,
 stock shifts); another step count or sampler falls back to the table's curve columns instead of
-failing.
+failing. Keep Flash Lite at the shipped **3 steps**; other step counts are not validated and may
+produce different results.
 
 ## 2026-09-18 — ComfyUI: Flash workflows no longer crash on DynamicVRAM machines
 
