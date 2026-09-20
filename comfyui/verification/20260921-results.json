@@ -1,0 +1,1120 @@
+{
+  "date": "2026-09-21",
+  "comfyui_commit": "29dcf48dd1e260f172dc055e774edaa1513460b1",
+  "gpu": "H100 80GB",
+  "workflow_count": 16,
+  "generation_count": 96,
+  "output_video_count": 108,
+  "profiles": {
+    "ordinary": [
+      {
+        "case": "pose_lite",
+        "workflow": "pose2v_lynnreal_4step_lite.json",
+        "workflow_sha256": "8071e5664e2cd826caf121cf9a06017b871d3b5727dbdb6e8888df9c70fdfbea",
+        "first_s": 276.217,
+        "second_s": 131.914,
+        "runs": [
+          {
+            "seed": 20260921001,
+            "prompt_id": "4c630f29-501b-4bbf-8da4-e2eec26d12c6",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "390a375b49451dda2af28b38f3b16c9461d4da167513a506cd366cc71c698e24",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921002,
+            "prompt_id": "4e388906-2013-459d-a002-b8d60dc0f3e2",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "0f75562dc5d8c95284b02da77dd554d0eb34c7ef4cc85628a5cfd77c93c9c249",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "r2v",
+        "workflow": "r2v_lynnreal_4step.json",
+        "workflow_sha256": "6abe14f7ebd7ab5cd54a86b7f83a37a080325f1fdf166c79533a35a543223847",
+        "first_s": 212.926,
+        "second_s": 111.649,
+        "runs": [
+          {
+            "seed": 20260921003,
+            "prompt_id": "e3589c1a-a588-424d-9079-ff9f052cb51a",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "8ab6d2b3c8b7965badfd88b3f32a8462bb57a19f846dc644f8a1856386a1b5eb",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921004,
+            "prompt_id": "59b85a6d-0ca2-43e7-83e5-79fe2758c6ef",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "e06349f358e481b73c53703268824d3c084c59cf11e53249c4f9a0581c1511fa",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "flash",
+        "workflow": "ref2v_lynnreal_flash_3_step.json",
+        "workflow_sha256": "239a221a929f8a9078ab5b4bb65322972efa7266fa36e5308facea62b6a5ed17",
+        "first_s": 287.45,
+        "second_s": 27.233,
+        "runs": [
+          {
+            "seed": 20260921005,
+            "prompt_id": "d623e084-72a0-4530-8857-e6ae7421cbfd",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "ef1a36615a118eb4114a014e31f842b9d05bacc4cadd5fa4e9415bed7cc2d67f",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921006,
+            "prompt_id": "78fbf088-050b-4aab-b02a-76dc0bf5ec7b",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "0e8403af0af3a6471c058d3e91163b1312bad405876b2280f4ad143a179ecd2a",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "t2v",
+        "workflow": "t2v_lynnreal_4step.json",
+        "workflow_sha256": "fcfa46885b4f0416ed153246279706582824f7dbd7b95bbee791cd37cfead979",
+        "first_s": 114.238,
+        "second_s": 50.027,
+        "runs": [
+          {
+            "seed": 20260921007,
+            "prompt_id": "34da12f0-c66b-4f50-a217-65f45b88042c",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "bedb9af26afff75454d68192bffb7265401ac7ea35a973e5b913f406a19f2a25",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921008,
+            "prompt_id": "2c4811c5-1bfe-4175-bf03-1a7119588005",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "a7d2e95e59e59306493acb117f76f51beb13f6b532a6b43d575fa5ba741584e4",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "i2v_lite",
+        "workflow": "i2v_lynnreal_4step_lite.json",
+        "workflow_sha256": "43cee4c6cb99965bed122cbc363f93e6a953a1df34604de3fb18301f103d65fb",
+        "first_s": 68.115,
+        "second_s": 24.773,
+        "runs": [
+          {
+            "seed": 20260921017,
+            "prompt_id": "e4ce95d4-588b-4899-bfbd-1219cf3b4bb7",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "c8bea6c297ea3e35d22293d226d0dd1212cbd72be53f76326394b1e2d369bea7",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921018,
+            "prompt_id": "cbfe9dea-2017-4d99-af0c-3962db323779",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "9392102c8534dd561ce06dec1f51e55d089f9ae291babb22a8ad88de2d9d2c92",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "v2v_lite",
+        "workflow": "v2v_lynnreal_4step_lite.json",
+        "workflow_sha256": "b17ca9ce919951dafbbb3ce068bcf129bc6cb0fa9e9620b18dbfc7613b5b7fe7",
+        "first_s": 72.96,
+        "second_s": 69.646,
+        "runs": [
+          {
+            "seed": 20260921019,
+            "prompt_id": "4e4402a7-601a-427b-9cd8-63b336b623bb",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "e1666083e4b55e37a490c450e9f0ca418207c5717749633572ab89cef105bb02",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921020,
+            "prompt_id": "1e71a374-52dc-4900-a3aa-326693c2562e",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "54f76a3a30b253374df57abdd62085b87fcf43e6fca09685eb807dc93d8a31a2",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "t2v_flash",
+        "workflow": "t2v_lynnreal_flash_3_step.json",
+        "workflow_sha256": "5b186e76e0a2b35f6f40549b8e0e85e5ab5d09270b590dbcd0424f763d851c38",
+        "first_s": 65.3,
+        "second_s": 12.308,
+        "runs": [
+          {
+            "seed": 20260921025,
+            "prompt_id": "4dd74881-a11e-41d0-bcfb-daa0c9e07e3c",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "3636b33e0019c4a21539d5225dea8336e9622e2f741c762da339d57edc110f2d",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921026,
+            "prompt_id": "8c7d9769-cf2d-4137-b74a-a3c21e85e85a",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "cdec498afb515b65ba7f2aee24d1f7968b1680bb1cbffaefde7d351b7a522e15",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "ti2v_flash_lite",
+        "workflow": "ti2v_lynnreal_flash_3_step_lite.json",
+        "workflow_sha256": "8539b89eaec8a427cec4f73f59f3078a43adccd5519ce44bbaeaac6b3528b953",
+        "first_s": 42.084,
+        "second_s": 15.539,
+        "runs": [
+          {
+            "seed": 20260921031,
+            "prompt_id": "7cc4302f-cfee-4f40-a8c5-e74451116d82",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "630939ed881e3b7ec370ac53cf82972312c546da0c14aeb30640137d666f7a58",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921032,
+            "prompt_id": "d5005fc0-bcee-448b-96f0-a6120e387246",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "655c6637588d7b1779d4416eedb2410fcde6941b063d8d11a4a8bfd7094c27dc",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "i2v",
+        "workflow": "i2v_lynnreal_4step.json",
+        "workflow_sha256": "f6e483a936bc01063b0e05ee75ba3f34c6cba7d790195300e145ec6757049217",
+        "first_s": 181.554,
+        "second_s": 27.222,
+        "runs": [
+          {
+            "seed": 20260921009,
+            "prompt_id": "2778f5d3-bd86-4946-8cb4-81c904b0fe8b",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "93b4064e1a562feace8113d4b0d5cfb867531fbcf802861e98077dfaf5398df5",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921010,
+            "prompt_id": "b43efdd0-3829-4b08-b4eb-c42e3e1d11ce",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "3f1aa6cb7768402d073ceab5e1a0e729cec6027d7cd8b0f94895ee3a63c3e07f",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "v2v",
+        "workflow": "v2v_lynnreal_4step.json",
+        "workflow_sha256": "d6c94900150c01d2dd80ecbd39ec3b80433e273e1ededa3c5778c5de0530291d",
+        "first_s": 108.55,
+        "second_s": 73.328,
+        "runs": [
+          {
+            "seed": 20260921011,
+            "prompt_id": "a04294ef-26d7-4158-8dc2-8885c8e93b70",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "6d6ff03fb0b9352641bd4fec989bc76544fb8ccd4ba74bcadf9735a5e38ab45e",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921012,
+            "prompt_id": "4e3ed193-844b-4b46-bdf2-c7d7ee921b5e",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "a23c3b35ae74b66ec3dcf4346b576c9d053c36c5aac34aa566f0a5136d9984c3",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "pose",
+        "workflow": "pose2v_lynnreal_4step.json",
+        "workflow_sha256": "f854321ffdf84c261bd6245da42f3e61138aa5519c6ed98140b5ee973ac422a6",
+        "first_s": 465.153,
+        "second_s": 136.515,
+        "runs": [
+          {
+            "seed": 20260921013,
+            "prompt_id": "6652f911-30e3-4535-9dda-c5ca5ced6ea0",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "20cf97a4e73c869accf2f8429ac91f42d64e978d2672a5115336432a6c797462",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921014,
+            "prompt_id": "6732c803-6c3a-4189-9f7f-a984056ded50",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "94747e99c9b089d38fa1d3daf3d0b80dd44be3c0dc286e9455a65ff6e7522ceb",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "t2v_lite",
+        "workflow": "t2v_lynnreal_4step_lite.json",
+        "workflow_sha256": "09338fe4189b50dc2c4ba48d6db1d4b5979952531b5e4aaaab5da6af1f4a6c45",
+        "first_s": 104.868,
+        "second_s": 45.713,
+        "runs": [
+          {
+            "seed": 20260921015,
+            "prompt_id": "e8e88b49-be3b-4ccd-919b-8efa7bf84b24",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "afdb5b65c2ebe04846067695e6e3024d5b2da29228c7cffca7fc5f57c2352842",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921016,
+            "prompt_id": "5376cf48-cd76-4226-b38a-f1c3fd5177f6",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "0fc0feed6de3b65e9ffa9db0bb3bf15525e8a1b8831db86410e5e5560f8f1315",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "r2v_lite",
+        "workflow": "r2v_lynnreal_4step_lite.json",
+        "workflow_sha256": "b2dad6a08a705642922f6377e5af9bb0a3cb68dd6ef2b8dd285ee69df2d34fa8",
+        "first_s": 152.02,
+        "second_s": 110.152,
+        "runs": [
+          {
+            "seed": 20260921021,
+            "prompt_id": "a63a7bda-cee6-4089-a3a5-4b6df53e0cc1",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "35951bb933dc61fe14b98a4ac3e11c7abd0379883804c4e6a0fe5015f01e64c1",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921022,
+            "prompt_id": "c4cae606-5a73-486a-adf6-7258f3801cca",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "7935337b715d7e95eb7efcc3a3f9723399dfe75f257a9a635995becb57df1e3b",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "flash_lite",
+        "workflow": "ref2v_lynnreal_flash_3_step_lite.json",
+        "workflow_sha256": "1df1613cbcad8c17512d705d2679bf7ee5bd0710811e859b34d85505f66b01b0",
+        "first_s": 111.881,
+        "second_s": 24.757,
+        "runs": [
+          {
+            "seed": 20260921023,
+            "prompt_id": "49dae6d8-3b84-4530-b410-5b632db2daea",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "cc1f29371641d785d33d60d7c9f8c5dca9f57e211c9ca4b0e34ffe044f752069",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921024,
+            "prompt_id": "03464fdc-5fcf-4339-ae3e-e9a82dbf712e",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "71ef88323b5af966d165d39d214a9b27eb88e19d904cf039a078c860fc18e3ee",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "ti2v_flash",
+        "workflow": "ti2v_lynnreal_flash_3_step.json",
+        "workflow_sha256": "ed1db081c7a5a1e9c60f46dea83ef58f95b9ca874a4c74912206aa4dea4c3495",
+        "first_s": 52.027,
+        "second_s": 12.806,
+        "runs": [
+          {
+            "seed": 20260921027,
+            "prompt_id": "424b4cf0-517a-4cc2-96cb-89e86be80d72",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "6956c618ebf55a7d2beb2687fe0e84f56473525fa53ecf9fac044f2c8596a6a7",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921028,
+            "prompt_id": "b046cd37-f2c7-466c-805b-ffdfc2145e8f",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "44b0feb935645f644c02bdd5b2545ec77354988f1446ead34ec2f323b7abdbd8",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "t2v_flash_lite",
+        "workflow": "t2v_lynnreal_flash_3_step_lite.json",
+        "workflow_sha256": "eadcbbb481bbde992496df72ecb6459ee33a161d7b2633ade01b7c56b7d93b82",
+        "first_s": 44.719,
+        "second_s": 12.075,
+        "runs": [
+          {
+            "seed": 20260921029,
+            "prompt_id": "20360966-c63f-4f40-9db1-aec1f962ee92",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "92a082abafbce39f2d03dd90c518f2589338e5ebbea48744f6ad24722c84198e",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921030,
+            "prompt_id": "b11272b8-f188-496c-9516-4938cfb3dae1",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "376a9da9a2cf97d90dc0aa6ecbf24fd8c824d28cba2bf239da86d1baa9a2bbbf",
+            "quality": "PASS"
+          }
+        ]
+      }
+    ],
+    "cu130_dynamic": [
+      {
+        "case": "pose_lite",
+        "workflow": "pose2v_lynnreal_4step_lite.json",
+        "workflow_sha256": "8071e5664e2cd826caf121cf9a06017b871d3b5727dbdb6e8888df9c70fdfbea",
+        "first_s": 199.177,
+        "second_s": 130.417,
+        "runs": [
+          {
+            "seed": 20260921001,
+            "prompt_id": "72ab7497-2d41-4d94-b35c-ffd033c13320",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "b69deaa04eda586ba5e33ba43a62f8fb49a1b744fbd252fd00d20ed8e229fd80",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921002,
+            "prompt_id": "19b6765e-ed4f-4fb2-9fcc-88ac6364f814",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "3aee137656de34ab261ccc80ebda503a2bf78d1d957d7ffdb113113f75a66f4d",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "r2v",
+        "workflow": "r2v_lynnreal_4step.json",
+        "workflow_sha256": "6abe14f7ebd7ab5cd54a86b7f83a37a080325f1fdf166c79533a35a543223847",
+        "first_s": 226.317,
+        "second_s": 101.966,
+        "runs": [
+          {
+            "seed": 20260921003,
+            "prompt_id": "2369c0e0-b2ee-459a-8bb6-5ad7d2b3fd3f",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "5e11820e93b8feb1301d94bd8824c5d3fdb5fe59f1652a6f0fc1ffc4d0c5f9d3",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921004,
+            "prompt_id": "f4256b04-6691-4019-866e-d2fe0dc784c0",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "6552b3302d297310cc682b8d274938c89524394a23cf22a05415d351aa62e35a",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "flash",
+        "workflow": "ref2v_lynnreal_flash_3_step.json",
+        "workflow_sha256": "239a221a929f8a9078ab5b4bb65322972efa7266fa36e5308facea62b6a5ed17",
+        "first_s": 144.256,
+        "second_s": 39.789,
+        "runs": [
+          {
+            "seed": 20260921005,
+            "prompt_id": "5fac7a37-6480-435e-bcad-3f3d8889f578",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "170316b8e2ee1fc21ed3bc3428629a498e0a9a753dc315af556a6f5fe1a6bd5a",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921006,
+            "prompt_id": "afb66bc0-4fd6-4459-b44b-5a6c84a0347d",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "305ea563e459e3928f67bcf0d8509cc1758435b21ffbc662c271b568f3c4023a",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "t2v",
+        "workflow": "t2v_lynnreal_4step.json",
+        "workflow_sha256": "fcfa46885b4f0416ed153246279706582824f7dbd7b95bbee791cd37cfead979",
+        "first_s": 151.648,
+        "second_s": 45.635,
+        "runs": [
+          {
+            "seed": 20260921007,
+            "prompt_id": "aa58e780-5397-4726-a445-6f992025031a",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "18837c12424fa39153c9af8e4dadf4170216cb2f936293850e05e58320bdceae",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921008,
+            "prompt_id": "0896be78-3bc3-4d4b-a095-0db8717fc40d",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "f249a2cb9fd9158eefeac06b167890cbfeb618cd6c56daf398f8b8fb1387d17a",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "i2v",
+        "workflow": "i2v_lynnreal_4step.json",
+        "workflow_sha256": "f6e483a936bc01063b0e05ee75ba3f34c6cba7d790195300e145ec6757049217",
+        "first_s": 26.505,
+        "second_s": 25.736,
+        "runs": [
+          {
+            "seed": 20260921009,
+            "prompt_id": "5d75370b-d7fe-48e7-a70a-c1b1665fd85e",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "fbe704c00178c8a9d4dd6540c8681d8b309badc55e65054388ec113fabf3dec8",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921010,
+            "prompt_id": "169a546e-d7af-4da1-abcd-bb00836f901b",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "0631db9021e2a8e573fc556ab1088b0f7f7595710c5edba1d0b102ccfc26a4bf",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "v2v",
+        "workflow": "v2v_lynnreal_4step.json",
+        "workflow_sha256": "d6c94900150c01d2dd80ecbd39ec3b80433e273e1ededa3c5778c5de0530291d",
+        "first_s": 74.933,
+        "second_s": 67.679,
+        "runs": [
+          {
+            "seed": 20260921011,
+            "prompt_id": "92589d5f-6303-42f0-adae-ee3e523c6616",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "f12233ce95e214c22ea877747cc6a3dd6db93a387ca3ddf5bd842cb32bb1b5c9",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921012,
+            "prompt_id": "d300ab5e-2ad5-48af-8e5c-74e41a221c1a",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "ff8496269af14910ed02fc4c2ef93db7c9097d4c9cd3521aabe62a73dc9e5218",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "pose",
+        "workflow": "pose2v_lynnreal_4step.json",
+        "workflow_sha256": "f854321ffdf84c261bd6245da42f3e61138aa5519c6ed98140b5ee973ac422a6",
+        "first_s": 225.451,
+        "second_s": 130.535,
+        "runs": [
+          {
+            "seed": 20260921013,
+            "prompt_id": "9f586a28-3544-4c30-b3ad-3ac00a0f1316",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "8d3b998193a5ce924bd4b899e67d6b83f34f4d07bca69f234f8358ef560373f0",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921014,
+            "prompt_id": "46053729-16a6-4efd-939e-25678ff257a7",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "d7349936919b9d5bb5d95da34f1334b147df50ea7889eaeb89c646a376a41f04",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "t2v_lite",
+        "workflow": "t2v_lynnreal_4step_lite.json",
+        "workflow_sha256": "09338fe4189b50dc2c4ba48d6db1d4b5979952531b5e4aaaab5da6af1f4a6c45",
+        "first_s": 63.495,
+        "second_s": 43.651,
+        "runs": [
+          {
+            "seed": 20260921015,
+            "prompt_id": "90a7a8f4-33fb-4525-bd0a-7f4fa5da60a3",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "9ab8cce3335bdbea8aea84ec36fa645d928ff72a2dbaf7feb699bb2ee74d142b",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921016,
+            "prompt_id": "49327f74-a983-4036-b419-d66346ff671b",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "e7d1c7e7a8b4cbb0da9503d6d65f4224b217858feb4f387a75b6d1b9b32e1c24",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "i2v_lite",
+        "workflow": "i2v_lynnreal_4step_lite.json",
+        "workflow_sha256": "43cee4c6cb99965bed122cbc363f93e6a953a1df34604de3fb18301f103d65fb",
+        "first_s": 25.505,
+        "second_s": 24.091,
+        "runs": [
+          {
+            "seed": 20260921017,
+            "prompt_id": "5c5366de-ff07-4ad0-9303-36bdb740b39b",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "787fc1ecb4b4c8218265021be2f95800bd0f16313627e840641bfddb867e3e2b",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921018,
+            "prompt_id": "954692a9-7662-4a19-8fc6-0418b80c1767",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "d512b4b2ee868c07a9939da4a7fb04937087772462f33fd332ac60fac06c1e52",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "v2v_lite",
+        "workflow": "v2v_lynnreal_4step_lite.json",
+        "workflow_sha256": "b17ca9ce919951dafbbb3ce068bcf129bc6cb0fa9e9620b18dbfc7613b5b7fe7",
+        "first_s": 74.177,
+        "second_s": 68.299,
+        "runs": [
+          {
+            "seed": 20260921019,
+            "prompt_id": "dbf0d0b0-e5cf-44b2-b552-80cfbea1d56c",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "38922799087eb44f580d31d1068caeb1445805870e03fac9166efecbeee7824a",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921020,
+            "prompt_id": "28b19e43-d382-43f1-8e4e-197bfb1bf21b",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "ad46172d3d1a504d385cd4c68728ad0d1efb1b6aa2a1eca02756f31e1e205b7c",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "r2v_lite",
+        "workflow": "r2v_lynnreal_4step_lite.json",
+        "workflow_sha256": "b2dad6a08a705642922f6377e5af9bb0a3cb68dd6ef2b8dd285ee69df2d34fa8",
+        "first_s": 139.18,
+        "second_s": 101.799,
+        "runs": [
+          {
+            "seed": 20260921021,
+            "prompt_id": "0519d4da-bb71-42fe-8cbe-532a9a8f3786",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "13e6e39305d9777ca60b7c5a6c31472dcc6219bcb52f52db07529e82a1771e81",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921022,
+            "prompt_id": "6f0059ff-8778-40c1-be0c-05b9da874426",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "9811b20ae4f9f1a60b80d3201b8e8cb9bc12a24301e5b64951bb9ed2a07b4b24",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "flash_lite",
+        "workflow": "ref2v_lynnreal_flash_3_step_lite.json",
+        "workflow_sha256": "1df1613cbcad8c17512d705d2679bf7ee5bd0710811e859b34d85505f66b01b0",
+        "first_s": 89.102,
+        "second_s": 41.185,
+        "runs": [
+          {
+            "seed": 20260921023,
+            "prompt_id": "a03d0076-1491-46c6-90d0-320163a0a1fd",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "084500cc4721339ef30a28247fd0df5c72707d2d0646da9e229e433cdeb16572",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921024,
+            "prompt_id": "fbfbfe95-190e-4373-af60-1ee29a307b4d",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "5658a0f4519d3a510577ac3e0005e77ad4123c987a94ca8ab3b2273305ff2624",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "t2v_flash",
+        "workflow": "t2v_lynnreal_flash_3_step.json",
+        "workflow_sha256": "5b186e76e0a2b35f6f40549b8e0e85e5ab5d09270b590dbcd0424f763d851c38",
+        "first_s": 83.694,
+        "second_s": 16.697,
+        "runs": [
+          {
+            "seed": 20260921025,
+            "prompt_id": "959b4f16-27dc-48d9-9a43-7cd45d287b3d",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "78d59bcde86e32ad6429950246e021e9875e95a01868aa40a36c54b94ede1cbf",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921026,
+            "prompt_id": "e9e151f2-8928-4983-bf52-6169fd557b73",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "955d839ff5a1c17012506c7e4bd7b3d7871418c3085f3e8f4a986f9402b0fb8b",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "ti2v_flash",
+        "workflow": "ti2v_lynnreal_flash_3_step.json",
+        "workflow_sha256": "ed1db081c7a5a1e9c60f46dea83ef58f95b9ca874a4c74912206aa4dea4c3495",
+        "first_s": 20.861,
+        "second_s": 18.344,
+        "runs": [
+          {
+            "seed": 20260921027,
+            "prompt_id": "d9f193cb-8ac0-43a2-a932-0ace4109ba58",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "298ff6bf66675c6ff06a366fb18da262d450967a11834f5747784c38233caf41",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921028,
+            "prompt_id": "e16f313f-f680-4189-90ff-f5762619f5b1",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "74b8fea4896ae230dbe74fa4836c8891ac3b0447886bb53dad0f3204fc499d81",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "t2v_flash_lite",
+        "workflow": "t2v_lynnreal_flash_3_step_lite.json",
+        "workflow_sha256": "eadcbbb481bbde992496df72ecb6459ee33a161d7b2633ade01b7c56b7d93b82",
+        "first_s": 23.797,
+        "second_s": 18.558,
+        "runs": [
+          {
+            "seed": 20260921029,
+            "prompt_id": "f84fe308-852e-4875-8640-29b3f48fda06",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "3bc665df52bd94c80ce6818044308a48e0048f13035d67b3805f3180a824f3bf",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921030,
+            "prompt_id": "9771d946-58d9-42d0-93f9-b20fe426f1e7",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "c1337e4707042ef836d02be0bcac29110ef3481ab917da9579e9b4d9906a4562",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "ti2v_flash_lite",
+        "workflow": "ti2v_lynnreal_flash_3_step_lite.json",
+        "workflow_sha256": "8539b89eaec8a427cec4f73f59f3078a43adccd5519ce44bbaeaac6b3528b953",
+        "first_s": 19.796,
+        "second_s": 20.652,
+        "runs": [
+          {
+            "seed": 20260921031,
+            "prompt_id": "a5721e52-b60e-40c2-9f6f-e2297df10e68",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "9d7519c989d713621ac6ddea505d51afb0881630db1c17264e35d2286399987e",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921032,
+            "prompt_id": "b8685eef-e631-484d-9eaa-45d9902e2178",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "00126f61509c05c37dc44e705731fb07e7937b99a834769db4ef927e4ef8798f",
+            "quality": "PASS"
+          }
+        ]
+      }
+    ],
+    "fa2": [
+      {
+        "case": "pose_lite",
+        "workflow": "pose2v_lynnreal_4step_lite.json",
+        "workflow_sha256": "8071e5664e2cd826caf121cf9a06017b871d3b5727dbdb6e8888df9c70fdfbea",
+        "first_s": 198.867,
+        "second_s": 127.55,
+        "runs": [
+          {
+            "seed": 20260921001,
+            "prompt_id": "2a55fbfd-40ef-42b7-8939-d9e6b2c36b5c",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "b0c319aaf5eb6d2fc7d3429b17cd1113943a7d47364606a60dd308cbefb0ce17",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921002,
+            "prompt_id": "e88f6357-76dc-4cc2-9595-55176cb224d5",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "56b5f79b83ebc121d2dd05e14c931f18760905cebc7e6d1531c2e500858a7876",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "r2v",
+        "workflow": "r2v_lynnreal_4step.json",
+        "workflow_sha256": "6abe14f7ebd7ab5cd54a86b7f83a37a080325f1fdf166c79533a35a543223847",
+        "first_s": 228.957,
+        "second_s": 100.923,
+        "runs": [
+          {
+            "seed": 20260921003,
+            "prompt_id": "4391aa72-7bf1-4d2f-aeea-988f8d2ed639",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "c6bc4912cf638aea4b0079823526c6347e1a517abf53181fcb33f861b009d1ff",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921004,
+            "prompt_id": "e9a6b26c-77f3-4ab2-a6d7-c7ac5c08bce9",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "0fc0436137ee4bc4a5facc9b9457de92f6a7f539cc49d327406255a88f80104c",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "flash",
+        "workflow": "ref2v_lynnreal_flash_3_step.json",
+        "workflow_sha256": "239a221a929f8a9078ab5b4bb65322972efa7266fa36e5308facea62b6a5ed17",
+        "first_s": 146.435,
+        "second_s": 39.664,
+        "runs": [
+          {
+            "seed": 20260921005,
+            "prompt_id": "00913217-1c03-4919-a792-55660ab93513",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "52dba698e846d67a1976a78ce35f526ea46686ffead954c2a6848be975db0432",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921006,
+            "prompt_id": "ac6864ab-6fb6-4e16-85c8-5ef6939c4cf2",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "458d1a9f156eab7520d56d70a8528b9c6aa02a7e65eae5c7b03cdc55a172dd67",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "t2v",
+        "workflow": "t2v_lynnreal_4step.json",
+        "workflow_sha256": "fcfa46885b4f0416ed153246279706582824f7dbd7b95bbee791cd37cfead979",
+        "first_s": 151.929,
+        "second_s": 46.423,
+        "runs": [
+          {
+            "seed": 20260921007,
+            "prompt_id": "5932f2e9-cdc3-49b3-b8c5-7eb9fc4eb389",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "86b7dca9da720c13ac894d73fabc8576bbc5f95f202975b2d072eaa2423a10a6",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921008,
+            "prompt_id": "0ca05abe-8d02-4a23-a3ba-3c79690c267d",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "4d41c14025578f4d5fae2d21911cb759ee3cbc6ed711d39117e9be7ba9d7fe62",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "i2v",
+        "workflow": "i2v_lynnreal_4step.json",
+        "workflow_sha256": "f6e483a936bc01063b0e05ee75ba3f34c6cba7d790195300e145ec6757049217",
+        "first_s": 27.312,
+        "second_s": 26.648,
+        "runs": [
+          {
+            "seed": 20260921009,
+            "prompt_id": "80291dc6-c437-41d5-bf61-915bb1f39af3",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "ad916e8f750655bbdf6d7195023b308469b5c9d91b2f9b1faebb0005e9a12f8e",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921010,
+            "prompt_id": "c0d8f723-934c-41ad-b4f3-163f360558a1",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "5e3c0e3e5275d2a955d0a2eb2f955fae84dd418e5ecce77060b27ebb2cf091b1",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "v2v",
+        "workflow": "v2v_lynnreal_4step.json",
+        "workflow_sha256": "d6c94900150c01d2dd80ecbd39ec3b80433e273e1ededa3c5778c5de0530291d",
+        "first_s": 75.925,
+        "second_s": 68.127,
+        "runs": [
+          {
+            "seed": 20260921011,
+            "prompt_id": "728a7aec-cbb0-459e-b3f4-b5f1def9fa40",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "b9e2d514691ffcf9f0cc281a1d6977feb44c6406e6a74d5998dc348cd34aee3e",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921012,
+            "prompt_id": "0aff8d38-a36e-452c-a30c-d6c8e865972f",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "d2566148bbb4673fa60aba4d64f408367c056126f5449c638ce0fe01ceff7b80",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "pose",
+        "workflow": "pose2v_lynnreal_4step.json",
+        "workflow_sha256": "f854321ffdf84c261bd6245da42f3e61138aa5519c6ed98140b5ee973ac422a6",
+        "first_s": 218.603,
+        "second_s": 127.33,
+        "runs": [
+          {
+            "seed": 20260921013,
+            "prompt_id": "bd375cd4-aed9-4fb8-95ad-dc40cc2a2d8f",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "325a4d7927f204549b3e9ccf78cdbd1a700ef6f34261a492279f1b7d9e735bf1",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921014,
+            "prompt_id": "98c52f7c-5647-47d7-a91b-047f6b0babf8",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "28d1cba90ae3d2b30d560f20ac2f9e2025347495cdf8c46d381c8ab963246f96",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "t2v_lite",
+        "workflow": "t2v_lynnreal_4step_lite.json",
+        "workflow_sha256": "09338fe4189b50dc2c4ba48d6db1d4b5979952531b5e4aaaab5da6af1f4a6c45",
+        "first_s": 71.378,
+        "second_s": 44.437,
+        "runs": [
+          {
+            "seed": 20260921015,
+            "prompt_id": "5ab64a54-3395-41b1-9d43-120d6acd91ff",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "9f537b1da98ffba6dd3ba282bc52d4468ebd289e4a6d43130a8b2edf19ba4026",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921016,
+            "prompt_id": "7826f56c-b603-4468-aebb-1ea90468d70f",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "b715751c3cacbc66b6ea4c9a58e75a5e22f2ac2440cafdf27833cbdf7712283d",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "i2v_lite",
+        "workflow": "i2v_lynnreal_4step_lite.json",
+        "workflow_sha256": "43cee4c6cb99965bed122cbc363f93e6a953a1df34604de3fb18301f103d65fb",
+        "first_s": 26.52,
+        "second_s": 25.016,
+        "runs": [
+          {
+            "seed": 20260921017,
+            "prompt_id": "3c20b242-f5a5-4458-8050-091dff181100",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "f07ab0346bcf8bb62fe059664573ba03b7b057e98e2c30f88dbe0798760c0215",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921018,
+            "prompt_id": "e40773b2-08f9-4950-9a76-fc2a9b719b4b",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "0a2dd3d7744c74006b4c45335bf181861f3ea5922f3de3d0ede55d8a6ba997b0",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "v2v_lite",
+        "workflow": "v2v_lynnreal_4step_lite.json",
+        "workflow_sha256": "b17ca9ce919951dafbbb3ce068bcf129bc6cb0fa9e9620b18dbfc7613b5b7fe7",
+        "first_s": 74.699,
+        "second_s": 69.948,
+        "runs": [
+          {
+            "seed": 20260921019,
+            "prompt_id": "9abf28d2-6ebf-4165-984c-a70fa4e60abc",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "a2d774d271e6d64c28dc46b8bdad430527270f806a2bff76feb71861dc6be802",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921020,
+            "prompt_id": "344bd7ca-a15b-4845-a2d2-107f04867a92",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "1c24b97d4eb0da1ff610f113c3484d095c99e7dfb562be176f875cf4ecd4b8a8",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "r2v_lite",
+        "workflow": "r2v_lynnreal_4step_lite.json",
+        "workflow_sha256": "b2dad6a08a705642922f6377e5af9bb0a3cb68dd6ef2b8dd285ee69df2d34fa8",
+        "first_s": 138.01,
+        "second_s": 101.752,
+        "runs": [
+          {
+            "seed": 20260921021,
+            "prompt_id": "aa9e2448-7a38-4603-8d69-83eae5e5cc0a",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "d87c4ddf7d50658162b7a29362b57dc45483c6921ddde3e6f5d135a229543cad",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921022,
+            "prompt_id": "096582aa-f46a-4710-b878-fec2e33fb339",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "04573affafe7d26db477ff0bd8f41d97520be075584cc498a7f655ea8181e460",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "flash_lite",
+        "workflow": "ref2v_lynnreal_flash_3_step_lite.json",
+        "workflow_sha256": "1df1613cbcad8c17512d705d2679bf7ee5bd0710811e859b34d85505f66b01b0",
+        "first_s": 84.775,
+        "second_s": 40.267,
+        "runs": [
+          {
+            "seed": 20260921023,
+            "prompt_id": "6034a0f0-4a75-4112-a283-71a8388aa3e7",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "af37fa825f82f0e50cdf207307a63c40fdde87b6c84f422cc55a9daa190faa29",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921024,
+            "prompt_id": "6c367c59-e2ca-423a-928e-3cd38d897370",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "3684507bb99300c94daafbec060e616195b7ccaa0703d1b0437308846a2c9416",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "t2v_flash",
+        "workflow": "t2v_lynnreal_flash_3_step.json",
+        "workflow_sha256": "5b186e76e0a2b35f6f40549b8e0e85e5ab5d09270b590dbcd0424f763d851c38",
+        "first_s": 85.032,
+        "second_s": 16.984,
+        "runs": [
+          {
+            "seed": 20260921025,
+            "prompt_id": "e7b82bee-a5b7-4d82-8a89-37b84f53ae2b",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "a2488b8da3d2f3e8e3e3a06cc9848c0d1a5431955640fa4e4d2e0c867c686f61",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921026,
+            "prompt_id": "21af01a2-5ca8-44e1-a326-07e5adc29528",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "8b96c6241e081a99f1bee3704e62e58111a068144660753a6f5849a74d9b152b",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "ti2v_flash",
+        "workflow": "ti2v_lynnreal_flash_3_step.json",
+        "workflow_sha256": "ed1db081c7a5a1e9c60f46dea83ef58f95b9ca874a4c74912206aa4dea4c3495",
+        "first_s": 21.041,
+        "second_s": 18.046,
+        "runs": [
+          {
+            "seed": 20260921027,
+            "prompt_id": "bc20462a-7b97-48c6-b64e-176a44636f47",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "5f3e398cc2371098dda0b91a5078623a821e45aa64bc9c7aabe0fa06e93b8011",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921028,
+            "prompt_id": "b320497f-6d3e-40d4-850e-64061dcc01e8",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "d650c02dc7dc60fe0e0608cdcb01a21d78d3107bd02bf50492c390c1ab38e91c",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "t2v_flash_lite",
+        "workflow": "t2v_lynnreal_flash_3_step_lite.json",
+        "workflow_sha256": "eadcbbb481bbde992496df72ecb6459ee33a161d7b2633ade01b7c56b7d93b82",
+        "first_s": 21.768,
+        "second_s": 18.393,
+        "runs": [
+          {
+            "seed": 20260921029,
+            "prompt_id": "91d89003-9f09-4693-b19f-3f7bb20bc920",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "eef885631777e1e1aae1b5ad0ef61bbbb81441e3c5ecc4f1c85cc53746dc5f8d",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921030,
+            "prompt_id": "f4914d6d-a964-4b41-aaeb-3439793d1fab",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "2d6096870379dbdb0957f45ad5da6e154abedba749937d769b84c8ee07970b30",
+            "quality": "PASS"
+          }
+        ]
+      },
+      {
+        "case": "ti2v_flash_lite",
+        "workflow": "ti2v_lynnreal_flash_3_step_lite.json",
+        "workflow_sha256": "8539b89eaec8a427cec4f73f59f3078a43adccd5519ce44bbaeaac6b3528b953",
+        "first_s": 19.806,
+        "second_s": 20.402,
+        "runs": [
+          {
+            "seed": 20260921031,
+            "prompt_id": "19c66db1-df95-41e8-9b21-7de129aef12a",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "d1086cb04ad7b41849a00d3a218047a243c20e9f01a816684795a277462a1d0e",
+            "quality": "PASS"
+          },
+          {
+            "seed": 20260921032,
+            "prompt_id": "884f3a57-90e6-492a-b48c-028b395bbc19",
+            "sampler_cached": false,
+            "primary_mp4_sha256": "7a586993fd1d90fb789e42f7fc13e667ec187e15de8cecc2a0c6f7dbe6d0a318",
+            "quality": "PASS"
+          }
+        ]
+      }
+    ]
+  }
+}

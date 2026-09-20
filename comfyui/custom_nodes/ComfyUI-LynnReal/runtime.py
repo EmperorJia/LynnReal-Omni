@@ -18,14 +18,10 @@ So the pack keeps ComfyUI's own reserve. Two things that help on this hardware a
 * **A default of no extra reserve** on the older stacks (cu126/torch 2.7 in the release
   environment), because that is what keeps the DiT and the text encoder resident.
 
-The pose control workflow is the exception: a frame-aligned control clip packs reference and
-target into a single sequence, and on a card where the DiT is fully resident that dies with
-
-    torch.OutOfMemoryError: Allocation on device
-    Allocated 68.6 GiB, peak 76.2 GiB, reserved 80.3 GiB
-
-Run that workflow with ``--reserve-vram 10`` (or ``LYNNREAL_RESERVE_VRAM=10``); it costs ~30 s
-per run because of the text-encoder eviction, and it is only needed for the control graphs.
+Reference and pose requests get additional working memory from ``sampling_safety``.
+That allowance is calculated from the current conditioning, passed to ComfyUI's model
+loader for that sampling call, and never stored as a global reserve. Switching back
+to a short text-only request therefore restores the ordinary loading budget.
 
 Overrides:
 
@@ -86,8 +82,8 @@ def _dynamic_vram() -> None:
         logging.info(
             "LynnReal: torch is CUDA %s; DynamicVRAM needs a cu13x torch (and torch >= 2.8), so "
             "ComfyUI is on its legacy model loader. The pack therefore keeps ComfyUI's own VRAM "
-            "reserve -- full-speed for t2v/i2v/r2v/v2v. Run the pose control workflow with "
-            "--reserve-vram 10 (it needs the headroom and pays ~30 s/run for it).", cuda_major)
+            "reserve. Reference and pose sampling receive input-dependent working memory "
+            "from the node pack.", cuda_major)
         return
 
     try:
@@ -125,8 +121,8 @@ def _activate() -> None:
     fixed = _fixed_reserve()
     if fixed is None:
         logging.info(
-            "LynnReal: keeping ComfyUI's default VRAM reserve (fast path). Graphs that need "
-            "headroom, such as the pose control workflow, take --reserve-vram 10.")
+            "LynnReal: keeping ComfyUI's default global VRAM reserve; H3 sampling headroom "
+            "is calculated per request, including reference and pose conditioning.")
         return
     if fixed <= 0:
         logging.info("LynnReal: ComfyUI's default VRAM reserve kept (reserve pinned to 0).")

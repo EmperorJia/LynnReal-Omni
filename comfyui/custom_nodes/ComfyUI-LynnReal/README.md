@@ -16,17 +16,55 @@ comfy-kitchen Triton backend when the CUDA backend is unavailable (torch < cu130
 what makes INT8 checkpoints fast -- about 3x versus the eager fallback
 (`--disable-triton-backend` or `LYNNREAL_NO_TRITON=1` opts out).
 
-## VRAM policy (`runtime.py`)
+## Automatic sampling safety (`sampling_safety.py`, `runtime.py`)
 
 * **Default: no extra reserve.** With ComfyUI's own setting the 61.7 GiB DiT and the 15 GiB text
   encoder stay resident and a warm 4-step 1344x768 t2v takes ~50 s. Reserving VRAM makes
   ComfyUI evict the text encoder between runs, which cost ~38 s per run in our measurements.
-* **DynamicVRAM on a cu13x torch.** ComfyUI enables it itself when the torch build is >= 2.8 and
-  CUDA >= 13; if it did not, the pack retries the same initialisation and logs the outcome
-  (`LYNNREAL_NO_DYNAMIC_VRAM=1` opts out).
-* **Pose control workflows need `--reserve-vram 10`** (or `LYNNREAL_RESERVE_VRAM=10`): a
-  frame-aligned control clip packs reference and target into one sequence and OOMs at the first
-  sampling step next to a fully resident DiT. The flag always wins over anything the pack does.
+* **DynamicVRAM follows ComfyUI’s detected capability.** The pack keeps an already active
+  DynamicVRAM configuration (including the tested cu128 and cu130 environments). On a cu13x
+  torch >= 2.8, it also attempts activation when ComfyUI has not enabled it, and logs the
+  outcome (`LYNNREAL_NO_DYNAMIC_VRAM=1` skips this additional activation attempt).
+* **Encoder memory includes expanded vision tokens.** Before loading the H3 text/vision
+  encoder, the pack counts the actual Qwen image patches and expanded sequence length.
+  This lets ComfyUI evict resident weights before encoding large references or pose frames,
+  including when switching from a fully loaded BF16 DiT. Plain short prompts keep the
+  ordinary encoder budget.
+* **Reference and pose memory is budgeted per request.** The core H3 estimate accounts for
+  the generated latent but omits reference and text rows. The node pack counts those actual
+  conditioning rows before model loading and supplies extra working memory to ComfyUI's loader.
+  No global reserve is changed, so a subsequent ordinary text-only request uses its normal
+  budget. Explicit `--reserve-vram` still adds the requested process-wide reserve.
+* **Large INT8 calls are split before entering the kernel.** Input, output and accumulator
+  sizes are checked against a conservative byte-offset limit. Oversized calls run as independent
+  row slices on the selected backend; small calls are unchanged. This also covers Standard
+  workflows, which do not pass through the Flash block wrapper. Triton can stay enabled.
+* **Reference `max` matches official sizing.** Images are resized to a 2048-pixel short edge,
+  including upscaling, with both dimensions aligned to 32. Larger references need more time
+  and working memory; the sampler budgets that automatically.
+
+Start all shipped workflows with the same command:
+
+```bash
+python main.py
+```
+
+Or use `comfyui/tools/launch_comfyui.sh` from the ComfyUI directory (or set `COMFYUI_DIR`).
+On QiZhi it uses the existing shared `lynnreal-comfyui` environment; elsewhere it uses `python`,
+overridable with `COMFYUI_PYTHON`. Neither a workflow-specific reserve nor a Triton-disable
+flag is required. The budget is an estimate, not a guarantee for arbitrarily long videos,
+unbounded reference inputs, or a GPU already occupied by another process.
+
+Safety regression checks (pass the installed ComfyUI directory):
+
+```bash
+# GPU: compare chunked/un-chunked INT8 output, including torch.ops dispatch.
+python custom_nodes/ComfyUI-LynnReal/tools/verify_sampling_safety.py "$PWD"
+# On a compatible cu130 build, also check native CUDA kernels.
+python custom_nodes/ComfyUI-LynnReal/tools/verify_sampling_safety.py "$PWD" --backend cuda
+# CPU: compare estimated Qwen token expansion with the real image preprocessor.
+python custom_nodes/ComfyUI-LynnReal/tools/verify_encoder_budget.py "$PWD"
+```
 
 ## Nodes
 
@@ -52,6 +90,5 @@ but garbage frames. This loader reads the depth from the checkpoint, applies the
 * ComfyUI with MiniMax-H3 support (`comfy/ldm/minimax/`, `ResolutionSelector`,
   `ComfyMathExpression`, `ComfySwitchNode`) and comfy-kitchen INT8
   (`int8_tensorwise`). Tested against ComfyUI 0.35.0.
-* An 80 GB-class GPU for the 1344x768 / 124-frame workflows; `--reserve-vram 5` and
-  `PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True` are recommended.
+* An 80 GB-class GPU for the tested 1344x768 / 124-frame workflows.
 * `flash-attn` (FA2) for the fast attention path, `triton` for the INT8 GEMM.

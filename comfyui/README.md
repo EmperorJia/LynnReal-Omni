@@ -37,16 +37,16 @@ All model files are on Hugging Face:
 
 ## What each task needs
 
-Every task needs the six items below; they differ only in the workflow, the extra input, and
-whether the node pack is required.
+Every task needs the current `ComfyUI-LynnReal` node pack for automatic memory accounting
+and safe INT8 execution. The workflows differ in their checkpoints and extra inputs below.
 
 | Task | Workflow | Diffusion model (`models/diffusion_models/`) | Text encoder (`models/text_encoders/`) | Video VAE (`models/vae/`) | Audio VAE (`models/vae/`) | Embedding (`models/embeddings/`) | Node pack | Extra input (`input/`) |
 |---|---|---|---|---|---|---|---|---|
-| Text → video | `t2v_lynnreal_4step.json` | `lynnreal_omni_standard_bf16.safetensors` (or `lynnreal_omni_standard_int8.safetensors` via the switch) | `qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors` | `minimax_h3_video_vae_fp16.safetensors` | `minimax_h3_audio_vae_fp32.safetensors` | `minimaxh3_art_is_explosion.safetensors` | — | — |
-| First frame → video | `i2v_lynnreal_4step.json` | same | same | same | same | same | — | `transparent_rgb_gaming_mouse.png` |
-| References → video | `r2v_lynnreal_4step.json` | same | same | same | same | same | — | `red_superboy_on_city_roof.png`, `mecha_dragon_lightning.png` |
+| Text → video | `t2v_lynnreal_4step.json` | `lynnreal_omni_standard_bf16.safetensors` (or `lynnreal_omni_standard_int8.safetensors` via the switch) | `qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors` | `minimax_h3_video_vae_fp16.safetensors` | `minimax_h3_audio_vae_fp32.safetensors` | `minimaxh3_art_is_explosion.safetensors` | `ComfyUI-LynnReal` | — |
+| First frame → video | `i2v_lynnreal_4step.json` | same | same | same | same | same | `ComfyUI-LynnReal` | `transparent_rgb_gaming_mouse.png` |
+| References → video | `r2v_lynnreal_4step.json` | same | same | same | same | same | `ComfyUI-LynnReal` | `red_superboy_on_city_roof.png`, `mecha_dragon_lightning.png` |
 | Pose control | `pose2v_lynnreal_4step.json` | same (INT8 switch **on** by default) | same | same | same | same | `ComfyUI-LynnReal` | `pose_boxing_first.png`, `pose_boxing_control.mp4` |
-| Video continuation | `v2v_lynnreal_4step.json` | same | same | same | same | same | — | `snowboard.mp4` |
+| Video continuation | `v2v_lynnreal_4step.json` | same | same | same | same | same | `ComfyUI-LynnReal` | `snowboard.mp4` |
 | **Flash** text → video | `t2v_lynnreal_flash_3_step.json` | `lynnreal_omni_flash_int8.safetensors` | same | `lynnreal_omni_light_vae_fp16.safetensors` | same | same | `ComfyUI-LynnReal` | — |
 | **Flash** first frame → video | `ti2v_lynnreal_flash_3_step.json` | same | same | same | same | same | `ComfyUI-LynnReal` | `beauty_first_frame.png` |
 | **Flash** references → video | `ref2v_lynnreal_flash_3_step.json` | same | same | same | same | same | `ComfyUI-LynnReal` | `beauty_reference_a.png`, `beauty_reference_b.png` |
@@ -104,8 +104,10 @@ the current node pack. The BF16/INT8 switch works exactly as in the original wor
 The **Flash** checkpoints run in ComfyUI too: `t2v`, `ti2v` (one first frame) and `ref2v`
 (reference pictures), each at its trained **three** steps with the W8A8 DiT and the Light VAE!
 
-On a **single H100 80 GB**, 1344×768, warm — model already loaded, the way a session runs — with
-three measured runs per cell:
+The earlier stage-level measurements below used a **single H100 80 GB**, 1344×768, warm,
+with three measured runs per cell. Their reference preprocessing predates the current
+2048-pixel `max` policy. For current full-workflow times across ordinary ComfyUI,
+cu130 DynamicVRAM and FA2, see the [paired workflow validation](VERIFICATION_20260921.md).
 
 | Task | 5 s · generate | 5 s · click-to-video | 10 s · generate | 10 s · click-to-video |
 | :--- | ---: | ---: | ---: | ---: |
@@ -129,8 +131,8 @@ FlashAttention-2 → cuDNN SDPA → native SDPA), falls back to ComfyUI's own bl
 fused kernel is unavailable, uses comfy-kitchen's CUDA backend when the torch build has it and
 its Triton backend otherwise, and pins the INT8 GEMM config only on the Hopper part it was
 measured on — everywhere else comfy-kitchen tunes for itself (`LYNNREAL_INT8_PIN=force`
-overrides)! It is all node pack: nothing under `comfy/` is patched on disk, so nothing breaks
-when ComfyUI is updated!
+overrides)! All changes live in the node pack; files under `comfy/` are not modified on disk.
+The validation record identifies the ComfyUI and backend versions tested with this release.
 
 ### ⚡ Lite checkpoint — 16.7 GiB instead of 37.0 GiB
 
@@ -167,22 +169,27 @@ The three Flash workflows do not need it: their checkpoint is already the traine
    Tested with 0.35.0.
 2. Copy `custom_nodes/ComfyUI-LynnReal` into `ComfyUI/custom_nodes/`.
 3. Copy `models/*` and `input/*` into the matching ComfyUI folders.
-4. Start ComfyUI and open a workflow. An 80 GB-class GPU is required at 1344×768;
-   `PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True` is recommended.
+4. Start ComfyUI with `python main.py` and open a workflow. An 80 GB-class GPU is
+   required for the tested 1344×768 / 124-frame workflows. The optional
+   [launcher](tools/launch_comfyui.sh) uses the same defaults for every workflow.
 
    **VRAM:** the node pack keeps ComfyUI's own reserve. With the original checkpoint this keeps
    the 61.7 GiB DiT and the 15 GiB text encoder resident — a warm 4-step 1344×768 five-second
    t2v runs in ~50 s. Standard Lite reduces the loaded DiT footprint from 63.2 GB to 38.6 GB
    (BF16), or from 45.5 GB to 20.8 GB (INT8).
-   Reserving VRAM instead makes ComfyUI evict the text encoder between runs (measured 46 s → 85 s).
-   `pose2v` defaults to INT8, so it fits without any flag; if you flip it back to bf16, run it
-   with `--reserve-vram 10` (or `LYNNREAL_RESERVE_VRAM=10`).
+   Reference and pose requests automatically budget working memory before encoding and
+   sampling, using their actual vision patches, reference and text token counts. The budget is
+   request-local: switching back to an ordinary text prompt restores the usual budget. Large INT8 projections are row-chunked before they
+   exceed safe kernel offsets, while smaller projections retain the fast path. Neither changing
+   the reserve nor disabling Triton is required when switching workflows.
 
-   The **Flash** workflows need none of that juggling: a 37 GiB W8A8 DiT plus a 3.6 GiB Light
-   VAE leave plenty of room, which is part of why they are this fast.
+   `ref_image_size=max` follows the official 2048-pixel short edge, including upscaling,
+   with both dimensions aligned to 32. These extra reference tokens can increase runtime;
+   automatic memory accounting preserves the selected reference geometry.
 
-   On a cu13x torch (≥ 2.8) ComfyUI uses DynamicVRAM instead and manages the split itself; the
-   pack reports which path is active at startup.
+   When ComfyUI enables DynamicVRAM, it manages the resident/offloaded split itself; the
+   pack reports the actual active path at startup. The pack also attempts automatic
+   activation on cu13x torch (≥ 2.8) if ComfyUI has not enabled it.
 
 ## Notes
 

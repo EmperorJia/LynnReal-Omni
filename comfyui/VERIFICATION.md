@@ -1,5 +1,7 @@
 # ComfyUI-LynnReal 节点包 · 验证记录（2026-09-15）
 
+最新的默认启动、三种运行配置及 16 个工作流双次验证见 [2026-09-21 验证记录](VERIFICATION_20260921.md)。
+
 把原先写在 `comfy/` 里的三处改动（Light VAE 的 26 层构造、272/16 tile 几何、
 `compile(decoder.forward)`）搬进节点包，改成 **`LynnRealH3VAELoader` 节点**，
 并在 H100 上做了静态 + 端到端验证。
