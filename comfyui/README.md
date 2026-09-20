@@ -44,7 +44,7 @@ whether the node pack is required.
 |---|---|---|---|---|---|---|---|---|
 | Text → video | `t2v_lynnreal_4step.json` | `lynnreal_omni_standard_bf16.safetensors` (or `lynnreal_omni_standard_int8.safetensors` via the switch) | `qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors` | `minimax_h3_video_vae_fp16.safetensors` | `minimax_h3_audio_vae_fp32.safetensors` | `minimaxh3_art_is_explosion.safetensors` | — | — |
 | First frame → video | `i2v_lynnreal_4step.json` | same | same | same | same | same | — | `transparent_rgb_gaming_mouse.png` |
-| References → video | `r2v_lynnreal_4step.json` | same | same | same | same | same | `ComfyUI-LynnReal` | `red_superboy_on_city_roof.png`, `mecha_dragon_lightning.png` |
+| References → video | `r2v_lynnreal_4step.json` | same | same | same | same | same | — | `red_superboy_on_city_roof.png`, `mecha_dragon_lightning.png` |
 | Pose control | `pose2v_lynnreal_4step.json` | same (INT8 switch **on** by default) | same | same | same | same | `ComfyUI-LynnReal` | `pose_boxing_first.png`, `pose_boxing_control.mp4` |
 | Video continuation | `v2v_lynnreal_4step.json` | same | same | same | same | same | — | `snowboard.mp4` |
 | **Flash** text → video | `t2v_lynnreal_flash_3_step.json` | `lynnreal_omni_flash_int8.safetensors` | same | `lynnreal_omni_light_vae_fp16.safetensors` | same | same | `ComfyUI-LynnReal` | — |
@@ -53,15 +53,6 @@ whether the node pack is required.
 
 The embedding is optional: the demo prompts reference it as
 `embedding:minimaxh3_art_is_explosion`. Drop it and remove that token to run without it.
-
-### Reference image size
-
-The pose2v, Standard r2v and Flash ref2v workflows use `ref_image_size=max`. With the current
-node pack this follows official Ref2VA exactly: each reference image is resized to a **2048-pixel
-short edge, including upscaling**, then each axis is rounded independently to a multiple of 32.
-The server log prints the original and resolved dimensions. Install the node pack even for the
-original Standard r2v workflow; stock ComfyUI currently keeps small references at their original
-size and therefore does not implement this release's `max` policy.
 
 The five matching Standard Lite workflows are named `*_4step_lite.json`. They keep the same
 inputs and the same `Use INT8 model?` switch, but select the BF16 Lite and INT8 Lite checkpoints.
