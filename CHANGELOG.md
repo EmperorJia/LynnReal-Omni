@@ -14,6 +14,15 @@ mirror this one.
 under `comfyui/models/` into the matching `ComfyUI/models/` folders. The same tree ships in the
 [Hugging Face bundle](https://huggingface.co/stdstu123/LynnReal-Onmi-beta-0.1/tree/main/comfyui).
 
+## 2026-09-20 — Ref2VA `max` references follow the official 2048-pixel policy
+
+The shared `MiniMaxH3ReferenceToVideo` integration now resizes every `max` reference to a
+**2048-pixel short edge, including upscaling small inputs**, then aligns each axis independently
+to a multiple of 32. This fixes the stock ComfyUI behavior that only downsizes references and
+keeps the policy consistent across the Standard/Lite pose2v and r2v workflows and the Flash/Lite
+ref2v workflows. The node tooltip and server log expose the resolved dimensions; a CPU regression
+check covers both upscaling and downscaling. The separate streaming pose workflow is unchanged.
+
 ## 2026-09-19 — Standard Lite: exact four-step BF16 and INT8 checkpoints
 
 **What.** Added two optional Standard checkpoints:

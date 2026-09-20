@@ -40,6 +40,10 @@
 > **When using a Lite checkpoint, keep the shipped step count: Standard Lite uses 4 steps and
 > Flash Lite uses 3 steps. Other step counts are not validated and may produce different results.**
 >
+> 🖼️ **Ref2VA `max` sizing now matches the official pipeline.** Pose2v, Standard r2v and Flash
+> ref2v references are resized to a 2048-pixel short edge—including upscaling small images—and
+> both axes are aligned to 32. Install the current `ComfyUI-LynnReal` node pack for this behavior.
+>
 > **This repository is an early beta and still has known limitations and unfinished features. Bugs, compatibility issues and inconsistent generation quality may remain. Thank you for your patience and understanding as we continue improving it. We plan to release the training code, part of the training data, and a more efficient dit in the future.**
 
 ## Paper

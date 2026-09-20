@@ -16,6 +16,11 @@ comfy-kitchen Triton backend when the CUDA backend is unavailable (torch < cu130
 what makes INT8 checkpoints fast -- about 3x versus the eager fallback
 (`--disable-triton-backend` or `LYNNREAL_NO_TRITON=1` opts out).
 
+The pack also corrects the shared `MiniMaxH3ReferenceToVideo` node's `max` image sizing to match
+official Ref2VA: every reference image is resized to a 2048-pixel short edge, **including small
+images that need upscaling**, and both axes are rounded to multiples of 32. It logs the source and
+resolved dimensions for every `max` reference; no file under `comfy/` is changed.
+
 ## VRAM policy (`runtime.py`)
 
 * **Default: no extra reserve.** With ComfyUI's own setting the 61.7 GiB DiT and the 15 GiB text
